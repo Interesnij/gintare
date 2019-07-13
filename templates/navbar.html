@@ -4,7 +4,7 @@
 <div class="dvt-nav dvt-nav-float dvt-nav-sticky dvt-nav-layout-logo-c-menu-lr dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".1s">
     <div class="dvt-nav-container">
         <div class="dvt-nav-brand">
-          <a href="">
+          <a href="{% url 'main' %}">
             История. Интересно!
           </a>
         </div>
@@ -13,24 +13,78 @@
         </div>
         <nav class="dvt-nav-menu">
             <ul class="dvt-nav-list">
-                <li class="active"><a href="">Главная</a></li>
+              {% url 'main' as main_url %}
+                <li>
+                  <a href="{{ main_url }}"
+                     {% if main_url == current_url %}
+                     class=" active"
+                     {% endif %}
+                     data-bjax data-target="#content1"
+                     data-el="#content1">Главная
+                   </a>
+                 </li>
                 <li><a href="#">Плейлисты</a>
+
                     <ul class="dvt-nav-dropdown closed">
-                        <li><a href="">Blog</a></li>
-                        <li><a href="">Blog Left Sidebar</a></li>
-                        <li><a href="">Blog Right Sidebar</a></li>
-                        <li><a href="">Blog Wide</a></li>
-                        <li><a href="">Blog Small</a></li>
-                        <li><a href="">Standard Post</a></li>
-                        <li><a href="">Gallery Post</a></li>
-                        <li><a href="">Video Post</a></li>
-                        <li><a href="">Post Left Sidebar</a></li>
-                        <li><a href="">Post Right Sidebar</a></li>
+                      {% for object in categories %}
+                      {% url 'movies_index' pk=object.pk as movies_index %}
+                        <li>
+                          <a href="{% url 'movies_index' pk=object.pk %}"
+                            {% if movies_index == current_url %}
+                            class=" active"
+                            {% endif %}
+                            data-bjax data-target="#content1"
+                            data-el="#content1">{{ object.name }}
+                          </a>
+                        </li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li><a href="#">Новости</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#">Контакты</a></li>
+                {% url 'guestbook' as guestbook_url %}
+                <li>
+                  <a href="{{ guestbook_url }}"
+                     {% if guestbook_url == current_url %}
+                     class=" active"
+                     {% endif %}
+                     data-bjax data-target="#content1"
+                     data-el="#content1">Отзывы
+                   </a>
+                </li>
+                {% url 'contacts' as contacts_url %}
+                <li>
+                  <a href="{{ contacts_url }}"
+                     {% if contac_url == current_url %}
+                     class=" active"
+                     {% endif %}
+                     data-bjax data-target="#content1"
+                     data-el="#content1">Контакты
+                   </a>
+                </li>
+                {% if user.is_authenticated %}
+                {% url 'profile-home' as profile_home %}
+                <li>
+                  <a href="{{ profile_home }}"
+                     {% if profile_home == current_url %}
+                     class="active"
+                     {% endif %}
+                     data-bjax data-target="#content1"
+                     data-el="#content1">Мой профиль
+                   </a>
+                </li>
+
+                {% else %}
+                {% url 'login' as login_url %}
+                <li>
+                  <a href="{{ login_url }}"
+                     {% if login_url == current_url %}
+                     class=" active"
+                     {% endif %}
+                     data-bjax data-target="#content1"
+                     data-el="#content1">Войти
+                   </a>
+                </li>
+                {% endif %}
             </ul>
         </nav>
     </div>

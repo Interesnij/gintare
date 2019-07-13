@@ -20103,26 +20103,6 @@ body.dvt-agent-touch .dvt-os-animation.animated {
     background: #121823
 }
 
-.dvt-demo-bg-image-1 {
-    background-image: url(https://placehold.it/1600x2000)
-}
-
-.dvt-demo-bg-image-2,
-.dvt-demo-bg-image-3,
-.dvt-demo-bg-image-4 {
-    background-image: url(https://placehold.it/1600x1000)
-}
-
 .dvt-demo-bg-image-5 {
-    background-image: url(https://placehold.it/1600x700)
-}
-
-.dvt-demo-bg-image-6,
-.dvt-demo-bg-image-7 {
-    background-image: url(https://placehold.it/1600x1000)
-}
-
-.dvt-demo-bg-image-8,
-.dvt-demo-bg-image-9 {
-    background-image: url(https://placehold.it/1600x2000)
+    background-image: url(/static/images/footer.jpg)
 }

@@ -19897,7 +19897,6 @@ body.dvt-agent-touch .dvt-os-animation.animated {
     .dvt-nav-layout-logo-c-menu-lr .dvt-nav-brand {
         -ms-flex-order: 1;
         order: 1;
-        width: 150px;
         text-align: center
     }
 

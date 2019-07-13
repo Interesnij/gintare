@@ -677,8 +677,6 @@ mark {
     content: "\00A0 \2014"
 }
 
-.carousel-inner>.carousel-item>a>img,
-.carousel-inner>.carousel-item>img,
 .img-fluid {
     display: block;
     max-width: 100%;
@@ -13909,64 +13907,6 @@ h6.font-italic {
     padding-right: 24px
 }
 
-.blockquote p {
-    text-indent: -28px;
-    font-family: Playfair Display;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.66666
-}
-
-.blockquote p:after,
-.blockquote p:before {
-    position: relative;
-    font-size: 3em;
-    line-height: 24px;
-    height: 24px;
-    width: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-    opacity: .2
-}
-
-.blockquote p:before {
-    content: "\201C"
-}
-
-.blockquote p:after {
-    content: "\201D";
-    margin-left: 24px
-}
-
-.blockquote.blockquote-reverse p {
-    text-indent: 0
-}
-
-.blockquote.blockquote-reverse p:before {
-    margin-right: 24px
-}
-
-.blockquote.blockquote-reverse p:after {
-    margin-left: 0;
-    width: 0;
-    right: -12px
-}
-
-.blockquote.blockquote-lg {
-    font-size: 36px
-}
-
-.blockquote.blockquote-lg p:after,
-.blockquote.blockquote-lg p:before {
-    font-size: 2.5em
-}
-
-.blockquote-footer {
-    font-size: 14px;
-    font-style: normal
-}
-
 .dvt-font-weight-100 {
     font-weight: 100 !important
 }
@@ -14805,25 +14745,6 @@ button::-moz-focus-inner {
     background: #000
 }
 
-.audio-popup {
-    position: relative;
-    padding-top: 44px;
-    width: 320px;
-    max-width: 90%;
-    max-width: 100%;
-    margin: 20px auto;
-    z-index: 2003
-}
-
-.audio-popup audio {
-    width: 100%;
-    box-shadow: 0 6px 6px -3px rgba(0, 0, 0, .1), 0 10px 14px 1px rgba(0, 0, 0, .1), 0 4px 18px 3px rgba(0, 0, 0, .06)
-}
-
-.audio-popup .mfp-close {
-    right: -12px
-}
-
 img.mfp-img {
     width: auto;
     max-width: 100%;
@@ -14960,53 +14881,6 @@ screen and (max-width:800px) and (orientation:landscape) {
         padding-left: 6px;
         padding-right: 6px
     }
-}
-
-.carousel-indicators li {
-    border-width: 2px;
-    margin: 0 8px
-}
-
-.carousel-indicators li.active {
-    margin: 0 8px
-}
-
-.carousel-caption>* {
-    color: #fff
-}
-
-.carousel-inner,
-.carousel-item {
-    height: 100%
-}
-
-.popover,
-.popover-title {
-    color: #f6f3f5
-}
-
-.popover-title {
-    font-size: .95em;
-    margin-bottom: 0;
-    line-height: 1.5
-}
-
-.modal-content {
-    box-shadow: 0 6px 6px -3px rgba(0, 0, 0, .1), 0 10px 14px 1px rgba(0, 0, 0, .07), 0 4px 18px 3px rgba(0, 0, 0, .06)
-}
-
-.modal-backdrop.in {
-    opacity: 1
-}
-
-.modal-header {
-    padding: 15px 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, .05)
-}
-
-.modal-footer {
-    padding: 15px 30px;
-    border-top: 1px solid rgba(0, 0, 0, .05)
 }
 
 .card-title {
@@ -15238,19 +15112,12 @@ screen and (max-width:800px) and (orientation:landscape) {
     overflow: hidden
 }
 
-.card>.row [class^=col-xs] .card-img,
-.card>.row [class^=col-xs] .carousel {
+.card>.row [class^=col-xs] .card-img {
     top: 0;
     left: 0;
     height: 100% !important;
     width: 100%;
     position: absolute;
-    object-fit: cover
-}
-
-.card>.row [class^=col-xs] .carousel img {
-    height: 100%;
-    width: 100% !important;
     object-fit: cover
 }
 
@@ -15270,19 +15137,12 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
         overflow: hidden
     }
 
-    .card>.row [class^=col-sm] .card-img,
-    .card>.row [class^=col-sm] .carousel {
+    .card>.row [class^=col-sm] .card-img {
         top: 0;
         left: 0;
         height: 100% !important;
         width: 100%;
         position: absolute;
-        object-fit: cover
-    }
-
-    .card>.row [class^=col-sm] .carousel img {
-        height: 100%;
-        width: 100% !important;
         object-fit: cover
     }
 
@@ -15303,19 +15163,12 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
         overflow: hidden
     }
 
-    .card>.row [class^=col-md] .card-img,
-    .card>.row [class^=col-md] .carousel {
+    .card>.row [class^=col-md] .card-img {
         top: 0;
         left: 0;
         height: 100% !important;
         width: 100%;
         position: absolute;
-        object-fit: cover
-    }
-
-    .card>.row [class^=col-md] .carousel img {
-        height: 100%;
-        width: 100% !important;
         object-fit: cover
     }
 
@@ -15336,19 +15189,12 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
         overflow: hidden
     }
 
-    .card>.row [class^=col-lg] .card-img,
-    .card>.row [class^=col-lg] .carousel {
+    .card>.row [class^=col-lg] .card-img {
         top: 0;
         left: 0;
         height: 100% !important;
         width: 100%;
         position: absolute;
-        object-fit: cover
-    }
-
-    .card>.row [class^=col-lg] .carousel img {
-        height: 100%;
-        width: 100% !important;
         object-fit: cover
     }
 
@@ -15369,8 +15215,7 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
         overflow: hidden
     }
 
-    .card>.row [class^=col-xl] .card-img,
-    .card>.row [class^=col-xl] .carousel {
+    .card>.row [class^=col-xl] .card-img {
         top: 0;
         left: 0;
         height: 100% !important;
@@ -15379,11 +15224,6 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
         object-fit: cover
     }
 
-    .card>.row [class^=col-xl] .carousel img {
-        height: 100%;
-        width: 100% !important;
-        object-fit: cover
-    }
 
     body.dvt-agent-edge .card>.row [class^=col-xl] .card-img,
     body.dvt-agent-explorer .card>.row [class^=col-xl] .card-img {
@@ -15463,63 +15303,6 @@ body.dvt-agent-explorer .card>.row [class^=col-xs] .card-img {
 .table-vertical-striped.table-striped tbody tr:nth-of-type(even) td:nth-of-type(odd),
 .table-vertical-striped.table-striped tbody tr:nth-of-type(odd) td:nth-of-type(even) {
     background: rgba(0, 0, 0, .025)
-}
-
-.countdown-clock {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-pack: center;
-    justify-content: center;
-    text-align: center;
-    color: #121823
-}
-
-.countdown-clock-box {
-    background: #f2efef;
-    border-radius: 0;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .12);
-    transition: all .3s;
-    margin: 0 5px 20px
-}
-
-.countdown-clock-box:hover {
-    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12)
-}
-
-.countdown-digits {
-    display: block;
-    padding: 20px;
-    font-size: 72px;
-    line-height: 1;
-    font-weight: lighter;
-    min-width: 1.6em
-}
-
-.countdown-label {
-    text-transform: uppercase;
-    font-size: .7em;
-    background: #e4dfdf;
-    display: block;
-    padding: 10px;
-    box-shadow: inset 0 2px 2px rgba(0, 0, 0, .12);
-    font-weight: 400
-}
-
-@media (max-width:991px) {
-    .countdown-digits {
-        font-size: 3em;
-        padding: 10px;
-        width: 2em
-    }
-}
-
-@media (max-width:767px) {
-    .countdown-digits {
-        font-size: 2em;
-        width: 2.3em
-    }
 }
 
 .progress {

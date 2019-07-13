@@ -13,83 +13,16 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="dvt-widget widget_text">
-                            <h4 class="dvt-widget-header">Разделы</h4>
+                            <h4 class="dvt-widget-header">Плейлисты</h4>
                             <ul class="footer_list">
-
-                                {% url 'main' as main_url %}
-                                <li {% if main_url == current_url %}
-                                class=" active"
-                                {% endif %}>
-                                  <a href="{{ main_url }}"
-                                     data-bjax data-target="#content1"
-                                     data-el="#content1">Главная
-                                   </a>
-                                 </li>
-
-                                <li><a href="#">Плейлисты</a>
-                                    <ul class="dvt-nav-dropdown closed">
-                                      {% for object in categories %}
-                                      {% url 'movies_index' pk=object.pk as movies_index %}
-                                        <li {% if movies_index == current_url %}
-                                        class=" active"
-                                        {% endif %}>
-                                          <a href="{% url 'movies_index' pk=object.pk %}"
-                                            data-bjax data-target="#content1"
-                                            data-el="#content1">{{ object.name }}
-                                          </a>
-                                        </li>
-                                        {% endfor %}
-                                    </ul>
+                              {% for object in categories %}
+                                <li>
+                                  <a href="{% url 'movies_index' pk=object.pk %}"
+                                    data-bjax data-target="#content1"
+                                    data-el="#content1">{{ object.name }}
+                                  </a>
                                 </li>
-
-                                {% url 'news_index' as news_url %}
-                                <li {% if news_url == current_url %}
-                                class=" active"
-                                {% endif %}><a href="{{ news_url }}">Новости</a></li>
-
-                                {% url 'guestbook' as guestbook_url %}
-                                <li {% if guestbook_url == current_url %}
-                                class=" active"
-                                {% endif %}>
-                                  <a href="{{ guestbook_url }}"
-                                     data-bjax data-target="#content1"
-                                     data-el="#content1">Отзывы
-                                   </a>
-                                </li>
-
-                                {% url 'contacts' as contacts_url %}
-                                <li {% if contac_url == current_url %}
-                                class=" active"
-                                {% endif %}>
-                                  <a href="{{ contacts_url }}"
-                                     data-bjax data-target="#content1"
-                                     data-el="#content1">Контакты
-                                   </a>
-                                </li>
-
-                                {% if user.is_authenticated %}
-                                {% url 'profile-home' as profile_home %}
-                                <li {% if profile_home == current_url %}
-                                class="active"
-                                {% endif %}>
-                                  <a href="{{ profile_home }}"
-                                     data-bjax data-target="#content1"
-                                     data-el="#content1">Профиль
-                                   </a>
-                                </li>
-
-                                {% else %}
-                                {% url 'login' as login_url %}
-                                <li {% if login_url == current_url %}
-                                class=" active"
-                                {% endif %}>
-                                  <a href="{{ login_url }}"
-                                     data-bjax data-target="#content1"
-                                     data-el="#content1">Войти
-                                   </a>
-                                </li>
-                                {% endif %}
-
+                              {% endfor %}
                             </ul>
                         </div>
                     </div>

@@ -13,7 +13,7 @@ from django.core.mail import send_mail, BadHeaderError
 
 class MainPageView(PageNumberView,TemplateView,CategoryListMixin):
 	template_name="main/mainpage.html"
-	news=New.objects.all()[0:2]
+	news=New.objects.all()[0:10]
 	movie1=Movie.objects.filter(category__order=1)[0:3]
 	movie2=Movie.objects.filter(category__order=2)[0:3]
 	movie3=Movie.objects.filter(category__order=3)[0:3]

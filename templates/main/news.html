@@ -1,5 +1,5 @@
 {% load staticfiles humanize %}
-
+{% if news %}
 <div class="section">
     <div class="section-background">
         <div class="section-bg-image dvt-demo-bg-image-2 section-bg-image-size-lg-100 section-bg-image-size-xs-contain section-bg-image-paralax dvt-opacity-5"></div>
@@ -8,51 +8,108 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s"><small class="text-muted font-italic">Последние</small> Новости</h1>
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        <small class="text-muted font-italic">Последние</small>
+                        Новости
+                    </h1>
                 </div>
+                {% for object in news %}
+                {% if not forloop.counter|divisibleby:"2" %}
                 <div class="col-lg-6">
-                    <div class="card card-horizontal dvt-shadow-8 dvt-shadow-hover-16 dvt-transition m-t-1 dvt-flex-items-lg-strech dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                    <div class="card card-horizontal dvt-shadow-8 dvt-shadow-hover-16 dvt-transition m-t-1 dvt-flex-items-lg-strech dvt-os-animation"
+                         data-os-animation="fadeIn"
+                         data-os-animation-delay=".3s">
                         <div class="row">
                             <div class="col-lg-4">
-                                <div class="card-img-container"><img class="card-img" src="assets/images/divinity/divinity-09-400x400.jpg" alt="Card image">
-                                    <div class="card-img-overlay card-img-overlay-mini card-img-overlay-top card-img-overlay-left text-xs-center"><span class="h3 d-block m-b-0">13 </span><span class="block">DEC</span></div>
+                                <div class="card-img-container">
+                                  {% if object.image %}
+                                  <img class="card-img" src="{{ object.image.url }}" alt="Card image">
+                                  {% endif %}
                                 </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-block">
-                                    <h3 class="card-title"><a href="single-event.html">Praise our only Lord & Savour</a></h3>
-                                    <h6 class="card-subtitle font-italic text-muted"><i class="fa fa-map-marker"></i> <a href="single-event.html">45 Plastira Avenue</a>, in <a href="#">Athens</a> <i class="fa fa-clock-o"></i> 22:00 am</h6>
+                                    <h3 class="card-title">
+                                      <a href="{% url 'news_detail' pk=object.pk %}"
+                                        data-bjax data-target="#content1"
+                                        data-el="#content1">
+                                        {{ object.title }}
+                                      </a>
+                                    </h3>
+                                    <h6 class="card-subtitle font-italic text-muted">
+                                      <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
+                                    </h6>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right"><a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-trigger text-muted" href="#"><i class="fa fa-share-alt"></i> </a><a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-close" href="#"><i class="fa fa-close"></i> </a><a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html"><i class="fa fa-facebook"></i> </a><a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html"><i class="fa fa-twitter"></i></a></div>
+                                    <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right">
+                                      <a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-trigger text-muted" href="#">
+                                        <i class="fa fa-share-alt"></i>
+                                      </a>
+                                      <a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-close" href="#">
+                                        <i class="fa fa-close"></i> </a>
+                                        <a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html">
+                                          <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html">
+                                          <i class="fa fa-twitter"></i>
+                                        </a>
+                                      </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                {% else %}
                 <div class="col-lg-6">
-                    <div class="card card-horizontal dvt-shadow-8 dvt-shadow-hover-16 dvt-transition m-t-1 dvt-flex-items-lg-strech dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                    <div class="card card-horizontal dvt-shadow-8 dvt-shadow-hover-16 dvt-transition m-t-1 dvt-flex-items-lg-strech dvt-os-animation"
+                         data-os-animation="fadeIn"
+                         data-os-animation-delay=".3s">
                         <div class="row">
                             <div class="col-lg-4">
-                                <div class="card-img-container"><img class="card-img" src="assets/images/divinity/divinity-06-400x400.jpg" alt="Card image">
-                                    <div class="card-img-overlay card-img-overlay-mini card-img-overlay-top card-img-overlay-left text-xs-center"><span class="h3 d-block m-b-0">13 </span><span class="block">DEC</span></div>
+                                <div class="card-img-container">
+                                  {% if object.image %}
+                                  <img class="card-img" src="{{ object.image.url }}" alt="Card image">
+                                  {% endif %}
                                 </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="card-block">
-                                    <h3 class="card-title"><a href="single-event.html">Gifts And Callings Are Without Repentance</a></h3>
-                                    <h6 class="card-subtitle font-italic text-muted"><i class="fa fa-map-marker"></i> <a href="single-event.html">45 Plastira Avenue</a>, in <a href="#">Athens</a> <i class="fa fa-clock-o"></i> 22:00 am</h6>
+                                    <h3 class="card-title">
+                                      <a href="{% url 'news_detail' pk=object.pk %}"
+                                        data-bjax data-target="#content1"
+                                        data-el="#content1">
+                                        {{ object.title }}
+                                      </a>
+                                    </h3>
+                                    <h6 class="card-subtitle font-italic text-muted">
+                                      <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
+                                    </h6>
                                 </div>
                                 <div class="card-footer">
-                                    <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right"><a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-trigger text-muted" href="#"><i class="fa fa-share-alt"></i> </a><a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-close" href="#"><i class="fa fa-close"></i> </a><a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html"><i class="fa fa-facebook"></i> </a><a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html"><i class="fa fa-twitter"></i></a></div>
+                                    <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right">
+                                      <a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-trigger text-muted" href="#">
+                                        <i class="fa fa-share-alt"></i>
+                                      </a>
+                                      <a class="dvt-icon-set-item dvt-transition dvt-icon-set-item-close" href="#">
+                                        <i class="fa fa-close"></i> </a>
+                                        <a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html">
+                                          <i class="fa fa-facebook"></i>
+                                        </a>
+                                        <a class="dvt-icon-set-item dvt-transition text-muted" href="single-event.html">
+                                          <i class="fa fa-twitter"></i>
+                                        </a>
+                                      </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                {% endif %}
+                {% ensfor %}
             </div>
         </div>
     </div>
 </div>
+{% endif %}

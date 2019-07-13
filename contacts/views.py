@@ -3,7 +3,7 @@ from generic.mixins import CategoryListMixin
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
-from dvig.forms import FeedbackForm
+from gintare.forms import FeedbackForm
 
 class ContactView(TemplateView,CategoryListMixin):
     template_name = 'contacts.html'

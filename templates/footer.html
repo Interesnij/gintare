@@ -3,6 +3,7 @@
   .footer_list li{
     list-style-type: none;
     font-size: 22px;
+    letter-spacing: 5px;
   }
 </style>
 <footer id="footer">
@@ -96,21 +97,29 @@
                         <div class="dvt-widget widget_em_widget">
                             <h4 class="dvt-widget-header">Последние новости</h4>
                             <ul>
-                                <li><a href="single-event.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Event title"><img class="dvt-widget-image m-r-1 pull-xs-left" alt="post image" src="assets/images/divinity/divinity-04-100x100.jpg"> </a><a href="single-event.html">Speaking for our lord</a> - Faith<ul>
-                                        <li><small><i class="fa fa-clock-o text-muted"></i> 14 Dec 16</small></li>
-                                        <li><small><i class="fa fa-map-marker text-muted"></i> Los Angeles</small></li>
-                                    </ul>
+                              {% for object in last_news %}
+                                <li>
+                                  <a href="{% url 'news_detail' pk=object.pk %}"
+                                    data-bjax data-target="#content1"
+                                    data-el="#content1"
+                                    class="pull-xs-left m-r-1 dvt-widget-image"
+                                    title="Event title">
+                                    {% if object.image %}
+                                      <img class="dvt-widget-image m-r-1 pull-xs-left" alt="post image" src="{{ object.image.url }}">
+                                    {% endif %}
+                                  </a>
+                                  <a href="{% url 'news_detail' pk=object.pk %}"
+                                    data-bjax data-target="#content1"
+                                    data-el="#content1"
+                                    class="pull-xs-left m-r-1 dvt-widget-image"
+                                    title="{{ object.title }}">
+                                    {{ object.title }}
+                                  </a>
+                                  <ul>
+                                    <li><small>{{ object.posted|naturaltime }}</small></li>
+                                  </ul>
                                 </li>
-                                <li><a href="single-event.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Event title"><img class="dvt-widget-image m-r-1 pull-xs-left" alt="post image" src="assets/images/divinity/divinity-05-100x100.jpg"> </a><a href="single-event.html">Open Heavens</a> - Religion<ul>
-                                        <li><small><i class="fa fa-clock-o text-muted"></i> 21 Dec 16</small></li>
-                                        <li><small><i class="fa fa-map-marker text-muted"></i> London</small></li>
-                                    </ul>
-                                </li>
-                                <li><a href="single-event.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Event title"><img class="dvt-widget-image m-r-1 pull-xs-left" alt="post image" src="assets/images/divinity/divinity-06-100x100.jpg"> </a><a href="single-event.html">Love After Marriage Class</a> - Faith<ul>
-                                        <li><small><i class="fa fa-clock-o text-muted"></i> 12 Jan 17</small></li>
-                                        <li><small><i class="fa fa-map-marker text-muted"></i> Athens</small></li>
-                                    </ul>
-                                </li>
+                              {% endfor %}
                             </ul>
                         </div>
                     </div>
@@ -118,9 +127,17 @@
                         <div class="dvt-widget widget_recent_entries">
                             <h4 class="dvt-widget-header">Последние ролики</h4>
                             <ul>
-                                <li class="text-truncate"><a href="single-post.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title"><img alt="post image" src="assets/images/divinity/divinity-07-100x100.jpg"> </a><a href="single-post.html">Precision with God's Words</a> <small class="post-date d-block">September 25, 2017</small></li>
-                                <li class="text-truncate"><a href="single-post.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title"><img alt="post image" src="assets/images/divinity/divinity-08-100x100.jpg"> </a><a href="single-post.html">Love for God's Glory</a> <small class="post-date d-block">June 12, 2017</small></li>
-                                <li class="text-truncate"><a href="single-post.html" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title"><img alt="post image" src="assets/images/divinity/divinity-09-100x100.jpg"> </a><a href="single-post.html">The way you should go</a> <small class="post-date d-block">May 05, 2017</small></li>
+                              {% for object in last_movie %}
+                                <li class="text-truncate">
+                                  <a href="single-post.html" class="pull-xs-left m-r-1 dvt-widget-image" title="{{ object.title }}">
+                                    {% if object.image %}
+                                    <img src="{{ object.image.url }}" alt="Card image">
+                                    {% endif %}
+                                  </a>
+                                  <a href="single-post.html">{{ object.title }}</a>
+                                  <small class="post-date d-block">{{ object.posted|naturaltime }}</small>
+                                </li>
+                              {% endfor %}
                             </ul>
                         </div>
                     </div>

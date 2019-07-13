@@ -13,18 +13,18 @@
         </div>
         <nav class="dvt-nav-menu">
             <ul class="dvt-nav-list">
-              {% url 'main' as main_url %}
+
+                {% url 'main' as main_url %}
                 <li {% if main_url == current_url %}
                 class=" active"
                 {% endif %}>
                   <a href="{{ main_url }}"
-
                      data-bjax data-target="#content1"
                      data-el="#content1">Главная
                    </a>
                  </li>
-                <li><a href="#">Плейлисты</a>
 
+                <li><a href="#">Плейлисты</a>
                     <ul class="dvt-nav-dropdown closed">
                       {% for object in categories %}
                       {% url 'movies_index' pk=object.pk as movies_index %}
@@ -39,36 +39,40 @@
                         {% endfor %}
                     </ul>
                 </li>
-                <li><a href="#">Новости</a></li>
+
+                {% url 'news_index' as news_url %}
+                <li {% if news_url == current_url %}
+                class=" active"
+                {% endif %}><a href="{{ news_url }}">Новости</a></li>
+
                 {% url 'guestbook' as guestbook_url %}
                 <li {% if guestbook_url == current_url %}
                 class=" active"
                 {% endif %}>
                   <a href="{{ guestbook_url }}"
-
                      data-bjax data-target="#content1"
                      data-el="#content1">Отзывы
                    </a>
                 </li>
+
                 {% url 'contacts' as contacts_url %}
                 <li {% if contac_url == current_url %}
                 class=" active"
                 {% endif %}>
                   <a href="{{ contacts_url }}"
-
                      data-bjax data-target="#content1"
                      data-el="#content1">Контакты
                    </a>
                 </li>
+
                 {% if user.is_authenticated %}
                 {% url 'profile-home' as profile_home %}
                 <li {% if profile_home == current_url %}
                 class="active"
                 {% endif %}>
                   <a href="{{ profile_home }}"
-
                      data-bjax data-target="#content1"
-                     data-el="#content1">Мой профиль
+                     data-el="#content1">Профиль
                    </a>
                 </li>
 
@@ -78,12 +82,12 @@
                 class=" active"
                 {% endif %}>
                   <a href="{{ login_url }}"
-
                      data-bjax data-target="#content1"
                      data-el="#content1">Войти
                    </a>
                 </li>
                 {% endif %}
+
             </ul>
         </nav>
     </div>

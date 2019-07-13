@@ -1,0 +1,57 @@
+{% extends "base_main.html" %}
+{% load staticfiles humanize %}
+{% block title %}
+  {% if search %}
+    {{ search }} ::
+  {% elif tag %}
+    Вы выбрали тег "{{ tag }}"
+  {% endif %}
+  {% if not tag %}
+    {{ category.name }}
+  {% endif %}
+{% endblock %}
+{% block content %}
+<style>
+a .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity:1;
+}
+a .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    border:1px #969696 solid;
+    display: block;
+    z-index: 100000;
+}
+a .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+a{
+  font-family: Dosis, arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 15px;
+    color: #111111;
+}
+</style>
+
+
+<script>
+    $("#search").keyup(function() {
+        if (this.value.length > 1) {
+            $('#search_container').html('').load("{% url 'movie_filter' %}?search=" + this.value);
+            $('#title_res').html("Вы ищете:  " + this.value);
+        } else {
+            $('#search_container').html('');
+            $('#title_res').html("");
+        }
+    });
+</script>
+{% endblock %}

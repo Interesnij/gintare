@@ -1,0 +1,69 @@
+{% load staticfiles humanize %}
+<style>
+a .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity:1;
+}
+a .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    border:1px #969696 solid;
+    display: block;
+    z-index: 100000;
+}
+a .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+a{
+  font-family: Dosis, arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 15px;
+    color: #111111;
+}
+</style>
+<div class="container relative" style="margin-top: -25px;">
+
+{% if search_movie %}
+
+<h3 class="section-title font-alt align-left mb-70 mb-sm-40">
+  Результаты поиска
+<h3>
+
+{% for object in search_movie %}
+
+      <a href="{% url 'movies_detail' pk=object.pk %}">
+            <span class="tooltip"> {{ object.title }}
+            ({{ object.posted|date:"d E / Y" }})
+              <span class="tooltiptext">
+                {% if object.image %}
+                <img src="{{ object.image.url }}"
+                     style="width:100%; margin-bottom: 10px;">
+                {% endif %}
+                <br>
+                <div class="font-alt">
+                    <span class="fa fa-thumbs-o-up"></span>
+                    <span data-count="like">{{ object.votes.likes.count }}</span>
+                    &nbsp;
+                    <span class="fa fa-thumbs-o-down"></span>
+                    <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                    <span class="fa fa-eye"></span>
+                    <span>{{ object.views }}</span>
+                </div>
+              </span>
+
+          </a>
+          <br>
+
+    {% endfor %}
+{% else %}
+    <h3 class="section-title font-alt align-left mb-70 mb-sm-40">Ничего не найдено</h3>
+{% endif %}
+</div>

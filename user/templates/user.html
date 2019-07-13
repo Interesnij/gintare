@@ -1,0 +1,15 @@
+{% extends "base_main.html" %}
+{% load staticfiles humanize %}
+
+{% block title %}
+  {% if user1.first_name and user1.last_name %}
+    {{ user1.first_name }}
+    {{ user1.last_name }}
+  {% else %}
+    {{ user1.username }}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}

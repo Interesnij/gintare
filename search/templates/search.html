@@ -1,0 +1,183 @@
+{% extends "base_main.html" %}
+{% load staticfiles %}
+{% block title %}Страница поиска{% endblock %}
+
+{% block content %}
+
+<div class="page-title-cont page-title-large2-cont bg-gray">
+    <div class="relative container align-left">
+        <div class="row">
+            <div class="col-md-8">
+                <h1 class="page-title2">Поиск</h1>
+            </div>
+            <div class="col-md-4">
+                <div class="breadcrumbs2 font-poppins">
+                    <a class="a-inv" href="{% url 'main' %}">Главная</a><span class="slash-divider">/</span><span class="bread-current">Результат поиска</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-section p-140-cont">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="clearfix mb-70">
+          <div class="right">
+          </div>
+        </div>
+        <div class="row">
+          <h3 class="text-center"><span>{% if search %}Результат поиска : {{ search }}{% endif %}</span></h3>
+          {% if news %}
+
+          {% for object in news %}
+          <div class="col-sm-6 col-md-4 col-lg-4 pb-50 pb-sm-30" >
+            <div class="post-prev-img">
+              <a href="{% url 'goods_detail' pk=object.pk %}"><img src="{{ object.image.url }}" alt="img"></a>
+            </div>
+            <div class="sale-label-cont">
+            </div>
+            <div class="post-prev-title mb-5 text-center">
+              <h3><a class="font-norm a-inv" href="{% url 'goods_detail' pk=object.pk %}">{{ object.name }}</a></h3>
+            </div>
+            {% if object.price_acc %}
+            <div class="shop-price-cont text-center">
+              <del>₽ {{ object.price }}</del>&nbsp;&nbsp;<strong>₽ {{ object.price_acc }}</strong>
+            </div>
+            {% else %}
+            <div class="shop-price-cont text-center">
+              <strong>₽ {{ object.price }}</strong>
+            </div>
+            {% endif %}
+
+          </div>
+          {% endfor %}
+          {% else %}
+          <h1 style="height:400px;text-align:center">
+            <br><br><br><br><br>
+            Ничего не найдено :-)</h1>
+          {% endif %}
+        </div>
+        {% if paginator.num_pages > 1 %}
+        <div class="row mt-0">
+          <nav class="blog-pag">
+            <ul class="pagination pag2 m-0">
+              {% for pn in paginator.page_range %}
+              <li{% if pn == page_obj.number %}class="active"{% endif %}>
+                <a {% if pn != page_obj.number %}href="?page={{ pn }}{% if search %}&search={{ search }}{% endif %}"{% endif %}>{{pn}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="col-sm-4 col-md-3 col-md-offset-1">
+
+        {% for object in good_categories %}
+        <div class="widget">
+          <h5 class="widget-title2">{{ object.name }}</h5>
+          <div class="widget-body">
+            <ul class="clearlist widget-menu font-poppins">
+              {% if object.order == 1 %}
+              {% for cat in cat_1 %}
+              <li>
+                <a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a>
+              </li>
+              {% endfor %}
+              {% endif %}
+              {% if object.order == 2 %}
+              {% for cat in cat_2 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 3 %}
+              {% for cat in cat_3 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 4 %}
+              {% for cat in cat_4 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 5 %}
+              {% for cat in cat_5 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 6 %}
+              {% for cat in cat_6 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 7 %}
+              {% for cat in cat_7 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 8 %}
+              {% for cat in cat_8 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 9 %}
+              {% for cat in cat_9 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+
+              {% if object.order == 10 %}
+              {% for cat in cat_10 %}
+              <li><a href="{% url 'goods_index' pk=cat.pk %}">{{ cat.name }}</a></li>
+              {% endfor %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="widget">
+          {% for object in goods_categories %}
+          <h5 class="widget-title2"><a href="{% url 'goods_index_2' pk=object.pk %}">{{ object.name }}</a></h5>
+          {% endfor %}
+        </div>
+        {% if bestsellers %}
+        <div class="widget">
+          <h5 class="widget-title2">Популярные товары</h5>
+          <div class="widget-body mt-30">
+            <ul class="clearlist widget-posts">
+              {% for object in bestsellers %}
+              <li class="clearfix">
+                <a href="{% url 'goods_detail' pk=object.pk %}"><img src="{{ object.image.url }}" alt="" class="widget-posts-img"></a>
+                <div class="widget-posts-descr">
+                  <a href="{% url 'goods_detail' pk=object.pk %}" class="font-poppins">{{ object.name }}</a>
+                  {% if object.price_acc %}
+                  <div class="lh-19">
+                    <del>₽ {{ object.price }}</del>&nbsp;&nbsp;<strong>₽ {{ object.price_acc }}</strong>
+                  </div>
+                  {% else %}
+                  <div class="lh-19">
+                    <strong>₽ {{ object.price }}</strong>
+                  </div>
+                  {% endif %}
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

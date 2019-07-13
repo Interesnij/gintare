@@ -1,5 +1,5 @@
 """
-WSGI config for gintare project.
+WSGI config for dvig project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'gintare.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dvig.settings')
 
 application = get_wsgi_application()

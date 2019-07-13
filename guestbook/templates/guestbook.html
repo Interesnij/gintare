@@ -1,0 +1,27 @@
+{% extends "base_main.html" %}
+{% load staticfiles %}
+{% block title %}Отзывы о нашей работе{% endblock %}
+{% block content %}
+
+<script type="text/javascript">
+    var form = $('#guest_form');
+    form.submit(function() {
+        $.ajax({
+            type: form.attr('method'),
+            url: "{% url 'guestbook' %}",
+            data: form.serialize(),
+            success: function(data) {
+              $('#ess1').remove();
+              $('#ess2').show();
+              $('#guest_list').empty();
+              $('#guest_list').html('').load("{% url 'guest_list' %}");
+            },
+            error: function(data) {
+                $("#message").html("ошибка!!");
+                console.log('Ошибка');
+            }
+        });
+        return false;
+    });
+</script>
+{% endblock %}

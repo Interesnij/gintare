@@ -1,0 +1,61 @@
+{% load staticfiles humanise %}
+<style>
+a .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity:1;
+}
+
+a .tooltip-icon{
+  background: #E14D43;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+a .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: black;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+
+    position: absolute;
+    z-index: 1;
+    top: -200px;
+}
+a{
+  font-family: Dosis, arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 15px;
+    font-size: 11px;
+    text-decoration: none;
+    color: #111111;
+}
+
+
+a .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+</style>
+{% if search_movie %}
+<br><br>
+{% for object in search_movie %}
+
+      <a href="{% url 'movies_detail' pk=object.pk %}">
+            <span class="tooltip"> {{ object.title }}
+            ({{ object.posted|date:"d E / Y" }})
+
+
+      </a>
+      
+    {% endfor %}
+{% else %}
+    <h3 class="archiveTtl">Ничего не найдено</h3>
+{% endif %}

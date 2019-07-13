@@ -1,0 +1,14 @@
+<div class="clearfix mt-40">
+  {% if object.get_previous_by_posted %}
+    <a href="{% url 'movies_detail' pk=object.get_previous_by_posted.pk %}"
+    class="blog-item-more left" data-bjax data-target=".ppp" data-el=".ppp">
+      <i class="fa fa-angle-left"></i>&nbsp;Раньше
+    </a>
+   {% endif %}
+   {% if object.get_next_by_posted %}
+    <a href="{% url 'movies_detail' pk=object.get_next_by_posted.pk %}"
+    class="blog-item-more right" data-bjax data-target=".ppp" data-el=".ppp">
+      Позже&nbsp;<i class="fa fa-angle-right"></i>
+    </a>
+    {% endif %}
+</div>

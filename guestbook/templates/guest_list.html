@@ -1,0 +1,8 @@
+{% load staticfiles humanize %}
+
+<h4 class="blog-page-title font-alt">Отзывы<small class="number">({{ object_list.count }})</small></h4>
+{% if object_list %}
+
+{% else %}
+<h3 style="text-align:center">Пока нет отзывов. Станьте первым! :-)</h3>
+{% endif %}

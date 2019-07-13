@@ -1,5 +1,10 @@
 {% load staticfiles %}
-
+<style>
+  .footer_list li{
+    list-style-type: none;
+    font-size: 22px;
+  }
+</style>
 <footer id="footer">
     <div class="section p-t-30"  style="background-image: url(/static/images/footer.jpg);background-size: cover;">
         <div class="section-content">
@@ -8,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="dvt-widget widget_text">
                             <h4 class="dvt-widget-header">Разделы</h4>
-                            <ul class="">
+                            <ul class="footer_list">
 
                                 {% url 'main' as main_url %}
                                 <li {% if main_url == current_url %}

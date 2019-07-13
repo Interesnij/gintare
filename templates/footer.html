@@ -44,11 +44,12 @@
                                   <a href="{% url 'news_detail' pk=object.pk %}"
                                     data-bjax data-target="#content1"
                                     data-el="#content1"
-                                    class="pull-xs-left m-r-1 dvt-widget-image"
                                     title="{{ object.title }}">
                                     {{ object.title }}
                                   </a>
-                                  
+                                  <ul>
+                                    <li><small>{{ object.posted|naturaltime }}</small></li>
+                                  </ul>
                                 </li>
                               {% endfor %}
                             </ul>

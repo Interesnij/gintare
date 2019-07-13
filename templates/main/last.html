@@ -1,4 +1,5 @@
 {% load staticfiles humanize %}
+
 {% if movie1 %}
 <div class="section">
     <div class="section-background">
@@ -15,6 +16,734 @@
                     </h1>
                 </div>
                 {% for object in movie1 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie2 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.1.name }}
+                    </h1>
+                </div>
+                {% for object in movie2 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie3 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.2.name }}
+                    </h1>
+                </div>
+                {% for object in movie3 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie4 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.3.name }}
+                    </h1>
+                </div>
+                {% for object in movie4 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie5 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.4.name }}
+                    </h1>
+                </div>
+                {% for object in movie5 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie6 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.5.name }}
+                    </h1>
+                </div>
+                {% for object in movie6 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie7 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.6.name }}
+                    </h1>
+                </div>
+                {% for object in movie7 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie8 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.7.name }}
+                    </h1>
+                </div>
+                {% for object in movie8 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie9 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.8.name }}
+                    </h1>
+                </div>
+                {% for object in movie9 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie10 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.9.name }}
+                    </h1>
+                </div>
+                {% for object in movie10 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie11 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.10.name }}
+                    </h1>
+                </div>
+                {% for object in movie11 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie12 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.11.name }}
+                    </h1>
+                </div>
+                {% for object in movie12 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie13 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.12.name }}
+                    </h1>
+                </div>
+                {% for object in movie13 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie14 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.13.name }}
+                    </h1>
+                </div>
+                {% for object in movie14 %}
+                <div class="col-md-4">
+                    <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
+                                data-os-animation="fadeIn"
+                                data-os-animation-delay=".4s">
+                        <div class="card-img-container">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
+                          {% endif %}
+                        <div class="card-block">
+                            <h4 class="card-title m-b-2">
+                              <a href="{% url 'movies_detail' pk=object.pk %}"
+                                data-bjax data-target="#content1"
+                                data-el="#content1">
+                                {{ object.title }}
+                              </a>
+                            </h4>
+                            <h6 class="card-subtitle font-italic text-muted m-b-3">
+                              <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                              <span class="fa fa-thumbs-o-up"></span>
+                              <span data-count="like">{{ object.votes.likes.count }}</span>
+                              <span class="fa fa-thumbs-o-down"></span>
+                              <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                              <span class="fa fa-eye"></span>
+                              <span>{{ object.views }}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if movie15 %}
+<div class="section">
+    <div class="section-background">
+        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
+    </div>
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3"
+                        data-os-animation="fadeIn"
+                        data-os-animation-delay=".3s">
+                        {{ categories.14.name }}
+                    </h1>
+                </div>
+                {% for object in movie15 %}
                 <div class="col-md-4">
                     <div class="card dvt-shadow-2 dvt-shadow-hover-8 dvt-transition dvt-os-animation"
                                 data-os-animation="fadeIn"

@@ -24,13 +24,13 @@
                           <img class="card-img" src="{{ object.image.url }}" alt="Card image"></div>
                           {% endif %}
                         <div class="card-block">
-                            <h3 class="card-title m-b-2">
+                            <h4 class="card-title m-b-2">
                               <a href="{% url 'movies_detail' pk=object.pk %}"
                                 data-bjax data-target="#content1"
                                 data-el="#content1">
                                 {{ object.title }}
                               </a>
-                            </h3>
+                            </h4>
                             <h6 class="card-subtitle font-italic text-muted m-b-3">
                               <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
                               <span class="fa fa-thumbs-o-up"></span>

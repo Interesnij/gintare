@@ -1,6 +1,6 @@
 {% load staticfiles humanize liked_user %}
 
-<span class="hidden-xs">
+<span class="d-none d-sm-block"> 
     <span class="posted">
         <span class="fa fa-clock-o"></span>
         <span style="font-size:18px;">{{ object.posted|naturaltime }}</span>
@@ -41,7 +41,7 @@
         <span>{{ object.views }}</span>
     </span>
 </span>
-<span class="visible-xs">
+<span class="d-sm-none d-block">
     <span class="posted">
         <span class="fa fa-clock-o"></span>
         <span style="font-size:18px;">{{ object.posted|date:"d E / Y" }}</span>

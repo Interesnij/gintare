@@ -15,15 +15,24 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".6s">
+                      <img src="{% static 'images/thankyou.png' %}" class="img-responsive">
+                        <div id="ess" class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".6s">
                             <div class="card-block">
-                                <form action="" class="contact-form">
+                                <form action="" id="feedback-form" method="post" class="contact-form">
                                     <div class="row text-xs-center">
-                                        <div class="col-md-6"><input type="text" id="name" name="name" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Name"></div>
-                                        <div class="col-md-6"><input type="email" id="email" name="email" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Your Email"></div>
-                                        <div class="col-md-12"><textarea id="message" name="message" rows="8" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Your Message"></textarea><button type="submit" class="btn btn-primary dvt-shadow-2">Send Message</button></div>
+                                        <div class="col-md-6">
+                                          {{ form1.name.errors }}
+                                          {{ form1.name }}
+                                        </div>
+                                        <div class="col-md-6">
+                                          {{ form1.email.errors }}
+                                          {{ form1.email }}
+                                        </div>
+                                        <div class="col-md-12">
+                                          {{ form1.message.errors }}
+                                          {{ form1.message }}
+                                          <button type="submit" class="btn btn-primary dvt-shadow-2">Отправить</button></div>
                                     </div>
-                                    <div class="oxy-messages p-t-2"></div>
                                 </form>
                             </div>
                         </div>

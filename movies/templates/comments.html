@@ -29,7 +29,8 @@
                 {% if comment.author_id.profile.avatar %}
                 <img class="media-object img-circle img-fluid"
                      src="{{ comment.author_id.profile.avatar.url }}"
-                     alt="comments author">
+                     alt="comments author"
+                     style="width: 70px;">
                 {% else %}
                 <img class="media-object img-circle img-fluid"
                      src="{% static 'images/user.png' %}"

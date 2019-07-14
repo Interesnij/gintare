@@ -3,6 +3,8 @@
 {% block title %}Отзывы о нашей работе{% endblock %}
 {% block content %}
 {% if not request.user.is_authenticated %}
+
+<div class="section">
 <div class="col-md-12">
 
   <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
@@ -47,8 +49,8 @@
     </form>
 </div>
 {% endif %}
-
-<div id="guest_list">
+</div>
+<div id="guest_list" class="section">
 
 <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
     data-os-animation="fadeIn"

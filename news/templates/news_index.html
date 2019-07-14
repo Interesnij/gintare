@@ -3,4 +3,61 @@
 {% block title %}{% if search %}{{ search }} :: {% elif tag %}{{ tag }} :: {% endif %}Раздел "Новости" {% endblock %}
 {% block content %}
 
+    <div class="section">
+
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h3 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                           Наши новости
+                         </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                      {% if object_list %}
+                      {% for object in latest %}
+                        <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".6s">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image">
+                          {% endif %}
+                            <div class="card-block">
+                                <h2 class="card-title m-b-2">
+                                  <a href="single-post.html">
+                                    {{ object.title }}
+                                  </a>
+                                </h2>
+                                <h6 class="card-subtitle font-italic text-muted m-b-3">
+                                  <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
+                                </h6>
+                                <p class="card-text">{{ object.description|safe }}</p>
+                            </div>
+                            <div class="card-footer">
+                              <a href="{% url 'news_detail' pk=object.pk %}" class="text-uppercase text-muted pull-xs-right">Читать</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <h3 style="text-align:center">Новости пока нет :-)</h3>
+                        {% endif %}
+                    </div>
+                    {% if paginator.num_pages > 1 %}
+                    <div class="col-md-12 text-xs-center">
+                        <nav>
+                            <ul class="pagination dvt-transition dvt-shadow-8 dvt-shadow-hover-16 dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                              {% for pn in paginator.page_range %}
+                                <li class="page-item {% if pn == page_obj.number %}active{% endif %}">
+                                  <a class="page-link" href="?page={{ pn }}{% if tag %}&tag={{ tag }}{% endif %}">{{pn}}</a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

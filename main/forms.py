@@ -12,6 +12,6 @@ class CommentForm(forms.Form):
 
     comment_area = forms.CharField(
         label="",widget=forms.Textarea(
-                attrs={'class': 'input-md round form-control', 'placeholder': 'Напишите что-нибудь','rows':'0','cols':'0','style':'height: 84px;'}
+                attrs={'class': 'input-md round form-control', 'placeholder': 'Напишите что-нибудь','rows':'8','cols':'0','style':'height: 84px;'}
             )
     )

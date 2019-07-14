@@ -1,45 +1,200 @@
 {% load staticfiles humanize liked_user %}
 
 <div class="col-md-12">
-    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s"><small class="text-muted font-italic">3 Comments</small> Read The Discussion</h3>
+  {% if comments.count == 0 %}
+    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
+        data-os-animation="fadeIn"
+        data-os-animation-delay=".3s">
+      Комментариев нет
+    </h3>
+  {% else %}
+  <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
+      data-os-animation="fadeIn"
+      data-os-animation-delay=".3s">
+    <small class="text-muted font-italic">Комментарии ({{ comments.count }})</small>
+    Читать обсуждения
+  </h3>
+  {% endif %}
 </div>
 <div class="col-md-12">
-    <ul class="media-list m-b-9 dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
-        <li class="media m-t-3">
-            <div class="media-left"><a href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-5-notinclude-70x70.jpg" alt="comments author"></a></div>
+    <ul class="media-list m-b-9 dvt-os-animation"
+        data-os-animation="fadeIn"
+        data-os-animation-delay=".3s">
+
+      {% for comment in comments %}
+        <li class="media m-t-3" id="{{ comment.id }}">
+            <a style="opacity:0;padding:0" name="comment-{{ comment.id }}"></a>
+            <div class="media-left">
+              <a href="#">
+                {% if comment.author_id.profile.avatar %}
+                <img class="media-object img-circle img-fluid"
+                     src="{{ comment.author_id.profile.avatar.url }}"
+                     alt="comments author">
+                {% else %}
+                <img class="media-object img-circle img-fluid"
+                     src="{% static 'images/user.png' %}"
+                     alt="user" />
+                {% endif %}
+              </a>
+            </div>
             <div class="media-body">
-                <h5 class="media-heading font-italic">Peter Chur Chlington - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                <h5 class="media-heading font-italic">{{ comment.author_id.username }} -
+                  <small class="text-muted">{{ comment.posted|naturaltime }}
+                    {% if request.user.is_authenticated and request.user != comment.author_id %}
+                      <a href="#"
+                         id="reply_{{ comment.id }}"
+                         onclick="return show_form({{ comment.id }})"
+                         class="pull-xs-right">ответить
+                       </a>
+                    {% endif %}
+                  </small>
+                </h5>
+                <p>{{ comment.content|safe }}</p>
             </div>
         </li>
-        <li class="media m-t-3">
-            <div class="media-left"><a href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-6-notinclude-70x70.jpg" alt="comments author"></a></div>
-            <div class="media-body">
-                <h5 class="media-heading font-italic">Donna Johnson - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p><!-- Nested media object -->
-                <div class="media m-t-3"><a class="media-left" href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-5-notinclude-70x70.jpg" alt="comments author"></a>
-                    <div class="media-body">
-                        <h5 class="media-heading font-italic">Peter Chur Chlington - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                    </div>
-                </div>
-            </div>
-        </li>
+
+        <script>
+            $("#reply_{{ comment.id }}").click(function() {
+                var objectUser = $("#comment_form").prev().find(".comment-author").text().trim();
+                $("#id_comment_area").val(objectUser + ', ')
+            });
+        </script>
+      {% endfor %}
+
     </ul>
 </div>
+{% if not request.user.is_authenticated %}
 <div class="col-md-12">
-    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s"><small class="text-muted font-italic">Want to join?</small> Leave a Reply</h3>
+
+  <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
+      <a href="{% url 'login' %}">Авторизуйтесь</a>
+      или
+      <a href="{% url 'signup' %}">Зарегистрируйтесь</a>
+  </p>
 </div>
+{% else %}
 <div class="col-md-12">
-    <form class="dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+
+    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3"
+        data-os-animation="fadeIn"
+        data-os-animation-delay=".3s"
+        onclick="return show_form('write_comment')">
+        <small class="text-muted font-italic">Есть мысли?</small>
+        Напишите
+    </h3>
+</div>
+
+<div class="col-md-12">
+    <form class="dvt-os-animation"
+          id="comment_form"
+          method="post"
+          data-os-animation="fadeIn"
+          data-os-animation-delay=".3s">
         <div class="form-group row">
-            <div class="col-md-6"><input type="text" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="lgFormGroupInput" placeholder="Your Name"></div>
-            <div class="col-md-6"><input type="email" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="smFormGroupInput" placeholder="Your Email"></div>
-        </div>
-        <div class="form-group row">
-            <div class="col-md-12"><textarea rows="8" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="smFormGroupArea" placeholder="Your Comment"></textarea></div>
+            <div class="col-md-12">
+              {{ form.parent_comment }}
+              {{ form.comment_area }}
+            </div>
         </div>
         <div class="form-group row m-t-2">
-            <div class="col-md-12"><input type="submit" value="Post Comment" class="btn btn-primary dvt-shadow-2 dvt-shadow-focus-4 dvt-transition"></div>
+            <div class="col-md-12">
+              <input type="submit"
+                     value="Отправить"
+                     class="btn btn-primary dvt-shadow-2 dvt-shadow-focus-4 dvt-transition">
+            </div>
         </div>
     </form>
 </div>
+{% endif %}
+
+<script>
+    function show_form(parent_comment_id) {
+        if (parent_comment_id == 'write_comment') {
+            $("#id_parent_comment").val('')
+            $("#id_comment_area").removeClass('shot-form');
+            $("#id_comment_area").val("");
+        } else {
+            $("#id_parent_comment").val(parent_comment_id);
+            $("#id_comment_area").addClass('shot-form');
+        }
+        $("#comment_form").insertAfter("#" + parent_comment_id);
+        $("#id_comment_area").focus();
+    }
+</script>
+
+<script type="text/javascript">
+    var form_comment = $('#comment_form');
+    form_comment.submit(function() {
+        $.ajax({
+            type: form_comment.attr('method'),
+            url: "{% url 'add_comment' object.pk %}",
+            data: form_comment.serialize(),
+            success: function(data) {
+            parent = $('.leave-comment-text').parent().get(0).tagName.toLowerCase();
+            console.log(parent);
+              if(parent == 'div'){
+                $("#gigig").html('').load("{% url 'last_comment' %}");
+                $("#comment_form").trigger('reset');
+              }else{
+                $("#comment_form").parent('.comment-item').next().html('').load("{% url 'last_comment' %}");
+                $("#comment_form").trigger('reset');
+                $("#comment_form").appendTo($("#write_comment"));
+                $("#id_comment_area").removeClass('shot-form');
+              };
+            },
+            error: function(data) {
+                $("#message").html("ошибка!!");
+                console.log('Ошибка');
+            }
+        });
+        return false;
+    });
+</script>
+<script>
+    function like2() {
+        var like = $(this);
+        var type = like.data('type');
+        var pk = like.data('id');
+        var action = like.data('action');
+        var dislike = like.next();
+        $.ajax({
+            url: "/movies/comment/" + pk + "/like/",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.addClass("text-success");
+                dislike.removeClass("text-danger");
+            }
+        });
+        return false;
+    }
+
+    function dislike2() {
+        var dislike = $(this);
+        var type = dislike.data('type');
+        var pk = dislike.data('id');
+        var action = dislike.data('action');
+        var like = dislike.prev();
+        $.ajax({
+            url: "/movies/comment/" + pk + "/dislike/",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.addClass("text-danger");
+                like.removeClass("text-success");
+            }
+        });
+        return false;
+    }
+    // Подключение обработчиков
+    $('[data-action="like2"]').click(like2);
+    $('[data-action="dislike2"]').click(dislike2);
+</script>

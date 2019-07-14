@@ -3,6 +3,14 @@
 {% block title %}{{ object.category.name }} :: {{ object.title }}{% endblock %}
 {% block content %}
 
+<style>
+.youtube{
+  width: 100%;
+  height: 30em;
+  max-height: 100%;
+}
+</style>
+
     <div class="section">
         <div class="section-background background-media">
             <div class="section-bg-image section-bg-image-size-lg-contain section-bg-image-position-xs-top section-bg-image-paralax dvt-demo-bg-image-8"></div>
@@ -13,7 +21,7 @@
                     <div class="col-md-9 m-t-25">
                         <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                           {% if object.link  %}
-                          <iframe width="1017" height="460" src="{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
+                          <iframe style="youtube" src="{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
                           {% else %}
                           {% if object.image %}
                           <img class="card-img" src="assets/images/divinity/divinity-02-800x500.jpg" alt="Card image">

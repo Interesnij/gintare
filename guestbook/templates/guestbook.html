@@ -9,6 +9,9 @@
         <div class="container">
             <div class="row">
                   <div class="col-md-12">
+
+                    <h4 class="" id="ess2" style="display:none">Спасибо за отзыв!</h4>
+
                       {% if not request.user.is_authenticated %}
                       <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
                           <a href="{% url 'login' %}">Авторизуйтесь</a>
@@ -17,6 +20,7 @@
                       </p>
                   </div>
                   {% else %}
+                  <span id="ess1">
                   <div class="col-md-12">
 
                       <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s" onclick="return show_form('write_comment')">
@@ -25,9 +29,7 @@
                       </h3>
                   </div>
 
-                  <h4 class="" id="ess2" style="display:none">Спасибо за отзыв!</h4>
-
-                  <div class="col-md-12" id="ess1">
+                  <div class="col-md-12">
                       <form class="dvt-os-animation animated fadeIn" action="" id="guest_form" method="post" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                           <div class="form-group row">
                               <div class="col-md-12">
@@ -41,6 +43,7 @@
                           </div>
                       </form>
                   </div>
+                  </span>
                   {% endif %}
 
 

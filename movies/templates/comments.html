@@ -42,6 +42,32 @@
             <div class="media-body">
                 <h5 class="media-heading font-italic">{{ comment.author_id.username }} -
                   <small class="text-muted">{{ comment.posted|naturaltime }}
+                    <span class="like2 {% if comment.votes.likes.all|user_in:user %}text-success{% endif %}"
+                          data-id="{{ comment.id }}"
+                          data-action="like2"
+                          data-type="comment"
+                          {% if request.user.is_authenticated %}
+                          data-tooltip="Мне нравится"
+                          {% else %}
+                          data-tooltip="Войдите или зарегистрируйтесь"
+                          {% endif %}>
+                        <span class="fa fa-thumbs-o-up"></span>
+                        <span data-count="like">{{ comment.votes.likes.count }}</span>
+                    </span>
+                    &nbsp;&nbsp;
+                    <span class="dislike2 {% if comment.votes.dislikes.all|user_in:user %}text-danger{% endif %}"
+                          data-id="{{ comment.id }}"
+                          data-action="dislike2"
+                          data-type="comment"
+                          {% if request.user.is_authenticated %}
+                          data-tooltip="Мне не нравится"
+                          {% else %}
+                          data-tooltip="Войдите или зарегистрируйтесь"
+                          {% endif %}>
+                        <span class="fa fa-thumbs-o-down"></span>
+                        <span data-count="dislike">{{ comment.votes.dislikes.count }}</span>
+                    </span>
+                    &nbsp;&nbsp;
                     {% if request.user.is_authenticated and request.user != comment.author_id %}
                       <a href="#"
                          id="reply_{{ comment.id }}"

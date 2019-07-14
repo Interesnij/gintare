@@ -1,5 +1,5 @@
 {% extends "base_main.html" %}
-{% load staticfiles %}
+{% load staticfiles humanize %}
 {% block title %}{% if search %}{{ search }} :: {% elif tag %}{{ tag }} :: {% endif %}Раздел "Новости" {% endblock %}
 {% block content %}
 

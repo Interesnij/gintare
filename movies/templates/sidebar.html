@@ -4,7 +4,7 @@
     <div class="dvt-widget widget_search">
         <form action="" id="searchform" method="get" name="searchform">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Поиск..." size="10"> 
+              <input type="text" class="form-control" placeholder="Поиск..." size="10">
               <span class="input-group-btn">
                 <button class="btn btn-primary" type="button">Искать</button></span></div>
         </form>
@@ -38,7 +38,7 @@
         <h4 class="dvt-widget-header">Теги</h4>
         <ul>
           {% for object in tags %}
-            <li><a href="{% url 'movies_index' pk=1 %}?tag={{ object|urlencode }}">faith</a></li>
+            <li><a href="{% url 'movies_index' pk=1 %}?tag={{ object|urlencode }}">{{ object }}</a></li>
           {% endfor %}
         </ul>
     </div>

@@ -3,4 +3,75 @@
 {% block title %}Новости :: {{ object.title }}{% endblock %}
 {% block content %}
 
+    <div class="section">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9 m-t-25" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                          {% if object.image %}
+                          <img class="card-img" src="{{ object.image.url }}" alt="Card image">
+                          {% endif %}
+                            <div class="card-block">
+                                <h1 class="h2 card-title">{{ object.title }}</h1>
+                                <h6 class="card-subtitle font-italic text-muted m-b-3">
+                                  <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
+                                </h6>
+                                <p>{{ object.content|safe }}</p>
+                            </div>
+                            <div class="card-footer">
+                              <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right">
+                                <a class="dvt-icon-set-item dvt-icon-set-item-trigger text-muted" href="1">
+                                  <i class="fa fa-share-alt"></i>
+                                </a>
+                                <a class="dvt-icon-set-item dvt-icon-set-item-close dvt-transition"
+                                   href="2">
+                                  <i class="fa fa-close"></i>
+                                </a>
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="http://vk.com/share.php?url=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
+                                  <i class="fa fa-vk"></i>
+                                </a>
+
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank"
+                                   rel="nofollow"">
+                                  <i class="fa fa-facebook"></i>
+                                </a>
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="https://twitter.com/share?url=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank"
+                                   rel="nofollow">
+                                  <i class="fa fa-twitter"></i>
+                                </a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if object.get_previous_by_posted %}
+                    <div class="col-md-4 offset-md-2 col-xs-6">
+                      <h4 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-9 animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay=".3s" style="animation-delay: 0.3s;">
+                        <a href="{% url 'news_detail' pk=object.get_previous_by_posted.pk %}">
+                          ← Раньше
+                        </a>
+                      </h4>
+                    </div>
+                    {% endif %}
+                    {% if object.get_next_by_posted %}
+                    <div class="col-md-4 col-xs-6">
+                      <h4 class="dvt-heading-bordered dvt-heading-bordered-reversed text-capitalize dvt-os-animation m-b-9 animated fadeInUp" data-os-animation="fadeInUp" data-os-animation-delay=".6s" style="animation-delay: 0.6s;">
+                        <a href="{% url 'news_detail' pk=object.get_next_by_posted.pk %}">
+                          Позже →
+                        </a>
+                      </h4>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

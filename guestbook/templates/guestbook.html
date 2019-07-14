@@ -8,7 +8,6 @@
     <div class="section-content">
         <div class="container">
             <div class="row">
-              <div class="col-md-8 offset-md-2 section">
                   <div class="col-md-12">
                       {% if not request.user.is_authenticated %}
                       <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
@@ -43,9 +42,9 @@
                       </form>
                   </div>
                   {% endif %}
-              </div>
 
-                <div id="guest_list" class="section">
+
+                <div id="guest_list" class="section" style="margin-top:50px">
 
                     {% if object_list %}
                     <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">

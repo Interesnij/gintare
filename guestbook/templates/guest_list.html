@@ -7,6 +7,7 @@
   Читать отзывы
 </h3>
 {% if object_list %}
+{% for object in latest %}
 <li class="media m-t-3">
     <div class="media-left">
       <a href="{% url 'profile-user' username=object.user.username %}">
@@ -32,6 +33,7 @@
         <p>{{ object.content|safe }}</p>
     </div>
 </li>
+{% endfor %}
 {% else %}
 <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
     data-os-animation="fadeIn"

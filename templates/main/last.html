@@ -2,9 +2,6 @@
 
 {% if movie1 %}
 <div class="section">
-    <div class="section-background">
-        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
-    </div>
     <div class="section-content">
         <div class="container">
             <div class="row">
@@ -36,6 +33,7 @@
                               <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
                               <span class="fa fa-thumbs-o-up"></span>
                               <span data-count="like">{{ object.votes.likes.count }}</span>
+                              &nbsp;
                               <span class="fa fa-thumbs-o-down"></span>
                               <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
                               <span class="fa fa-eye"></span>

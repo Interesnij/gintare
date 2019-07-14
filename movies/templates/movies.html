@@ -29,6 +29,44 @@
 .text-danger {
     color: #FF0000 !important;
 }
+.shot-form{
+	  width: 75%;
+	float: right;
+	margin-left: 100px;
+	margin-bottom: 10px;
+	}
+	  span {
+	  position:relative;
+	}
+	span[data-tooltip]:before {
+	  position: absolute;
+	  left: 0;
+	  top: -100px;
+	  background-color: #372811;
+	  color: #ffffff;
+	  line-height: 30px;
+	  border-radius: 5px;
+	  padding: 0 15px;
+	  content: attr(data-tooltip);
+	  display: none;
+	  white-space: nowrap;
+	  height: 30px;
+	  top: -40px;
+	}
+	    span[data-tooltip]:after {
+	    position: absolute;
+	    left: 15px;
+	    top: -10px;
+	    border-top: 7px solid #372811;
+	      border-left: 7px solid transparent;
+	      border-right: 7px solid transparent;
+	    content: "";
+	    display: none;
+	    }
+	    span[data-tooltip]:hover:after, span[data-tooltip]:hover:before {
+	    display: block;
+	    }
+
 </style>
 
     <div class="section">

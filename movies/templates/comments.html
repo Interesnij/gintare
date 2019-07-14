@@ -42,6 +42,7 @@
             <div class="media-body">
                 <h5 class="media-heading font-italic">{{ comment.author_id.username }} -
                   <small class="text-muted">{{ comment.posted|naturaltime }}
+                    &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="like2 {% if comment.votes.likes.all|user_in:user %}text-success{% endif %}"
                           data-id="{{ comment.id }}"
                           data-action="like2"

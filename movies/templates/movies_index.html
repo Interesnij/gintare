@@ -40,10 +40,17 @@ a .tooltip:hover .tooltiptext {
         <div class="section-content">
             <div class="container">
                 <div class="row">
+                  {% ig tag %}
                     <div class="col-md-12">
                         <h3 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
-                           {{ category.name }}</h3>
+                           тег "{{ tag }}"</h3>
                     </div>
+                  {% else %}
+                  <div class="col-md-12">
+                      <h3 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                         {{ category.name }}</h3>
+                  </div>
+                  {% endif %}
                 </div>
                 <div class="row">
                     <div class="col-md-12">

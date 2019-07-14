@@ -24,7 +24,7 @@
                           {% endif %}
                             <div class="card-block">
                                 <h2 class="card-title m-b-2">
-                                  <a href="single-post.html">
+                                  <a href="{% url 'news_detail' pk=object.pk %}">
                                     {{ object.title }}
                                   </a>
                                 </h2>

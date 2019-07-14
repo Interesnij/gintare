@@ -1,1 +1,45 @@
 {% load staticfiles humanize liked_user %}
+
+<div class="col-md-12">
+    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s"><small class="text-muted font-italic">3 Comments</small> Read The Discussion</h3>
+</div>
+<div class="col-md-12">
+    <ul class="media-list m-b-9 dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+        <li class="media m-t-3">
+            <div class="media-left"><a href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-5-notinclude-70x70.jpg" alt="comments author"></a></div>
+            <div class="media-body">
+                <h5 class="media-heading font-italic">Peter Chur Chlington - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+            </div>
+        </li>
+        <li class="media m-t-3">
+            <div class="media-left"><a href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-6-notinclude-70x70.jpg" alt="comments author"></a></div>
+            <div class="media-body">
+                <h5 class="media-heading font-italic">Donna Johnson - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p><!-- Nested media object -->
+                <div class="media m-t-3"><a class="media-left" href="#"><img class="media-object img-circle img-fluid" src="assets/images/team/team-5-notinclude-70x70.jpg" alt="comments author"></a>
+                    <div class="media-body">
+                        <h5 class="media-heading font-italic">Peter Chur Chlington - <small class="text-muted">June 11th, 2001 <a href="#" class="pull-xs-right">reply</a></small></h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="col-md-12">
+    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s"><small class="text-muted font-italic">Want to join?</small> Leave a Reply</h3>
+</div>
+<div class="col-md-12">
+    <form class="dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+        <div class="form-group row">
+            <div class="col-md-6"><input type="text" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="lgFormGroupInput" placeholder="Your Name"></div>
+            <div class="col-md-6"><input type="email" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="smFormGroupInput" placeholder="Your Email"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-12"><textarea rows="8" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition" id="smFormGroupArea" placeholder="Your Comment"></textarea></div>
+        </div>
+        <div class="form-group row m-t-2">
+            <div class="col-md-12"><input type="submit" value="Post Comment" class="btn btn-primary dvt-shadow-2 dvt-shadow-focus-4 dvt-transition"></div>
+        </div>
+    </form>
+</div>

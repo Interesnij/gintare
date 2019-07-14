@@ -1,1 +1,46 @@
 {% load staticfiles humanize %}
+
+<div class="col-md-3 sidebar m-t-25">
+    <div class="dvt-widget widget_search">
+        <form action="" id="searchform" method="get" name="searchform">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Поиск..." size="10"> 
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Искать</button></span></div>
+        </form>
+    </div>
+    <div class="dvt-widget widget_recent_entries">
+        <h4 class="dvt-widget-header">Ролики плейлиста</h4>
+        <ul>
+          {% for mov in object.get_moovies %}
+            <li class="text-truncate">
+              <a href="{% url 'movies_detail' pk=mov.pk %}" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title">
+                {% if mov.image %}
+                <img alt="post image" src="{{ mov.image.url }}">
+                {% endif %}
+              </a>
+              <a href="{% url 'movies_detail' pk=mov.pk %}">{{ mov.title }}</a>
+              <small class="post-date d-block">{{ mov.posted|naturaltime }}</small>
+            </li>
+          {% endfor %}
+        </ul>
+    </div>
+    <div class="dvt-widget widget_categories">
+        <h4 class="dvt-widget-header">Плейлисты</h4>
+        <ul>
+          {% for object in categories %}
+            <li><a href="{% url 'movies_index' pk=object.pk %}">{{ object.name }}</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% if tags %}
+    <div class="dvt-widget widget_tag_cloud">
+        <h4 class="dvt-widget-header">Теги</h4>
+        <ul>
+          {% for object in tags %}
+            <li><a href="{% url 'movies_index' pk=1 %}?tag={{ object|urlencode }}">faith</a></li>
+          {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>

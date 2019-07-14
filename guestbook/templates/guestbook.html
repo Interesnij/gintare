@@ -2,6 +2,97 @@
 {% load staticfiles %}
 {% block title %}Отзывы о нашей работе{% endblock %}
 {% block content %}
+{% if not request.user.is_authenticated %}
+<div class="col-md-12">
+
+  <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
+      <a href="{% url 'login' %}">Авторизуйтесь</a>
+      или
+      <a href="{% url 'signup' %}">Зарегистрируйтесь</a>
+  </p>
+</div>
+{% else %}
+<div class="col-md-12">
+
+    <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3"
+        data-os-animation="fadeIn"
+        data-os-animation-delay=".3s"
+        onclick="return show_form('write_comment')">
+        <small class="text-muted font-italic">Есть мысли?</small>
+        Напишите
+    </h3>
+</div>
+
+<h4 class="" id="ess2" style="display:none">Спасибо за отзыв!</h4>
+
+<div class="col-md-12" id="ess1">
+    <form class="dvt-os-animation"
+          action=""
+          id="guest_form"
+          method="post"
+          data-os-animation="fadeIn"
+          data-os-animation-delay=".3s">
+        <div class="form-group row">
+            <div class="col-md-12">
+              {{ form }}
+            </div>
+        </div>
+        <div class="form-group row m-t-2">
+            <div class="col-md-12">
+              <input type="submit"
+                     value="Отправить"
+                     class="btn btn-primary dvt-shadow-2 dvt-shadow-focus-4 dvt-transition">
+            </div>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+<div id="guest_list">
+
+<h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
+    data-os-animation="fadeIn"
+    data-os-animation-delay=".3s">
+  <small class="text-muted font-italic">Отзывы ({{ object_list.count }})</small>
+  Читать отзывы
+</h3>
+
+{% if object_list %}
+<li class="media m-t-3">
+    <div class="media-left">
+      <a href="{% url 'profile-user' username=object.user.username %}">
+        {% if object.user.profile.avatar %}
+        <img class="media-object img-circle img-fluid"
+             src="{{ object.user.profile.avatar.url }}"
+             alt="comments author"
+             style="width: 70px;">
+        {% else %}
+        <img class="media-object img-circle img-fluid"
+             src="{% static 'images/user.png' %}"
+             alt="user"
+             style="width: 70px;" />
+        {% endif %}
+      </a>
+    </div>
+    <div class="media-body">
+        <h5 class="media-heading font-italic">{{ object.user.username }} -
+          <small class="text-muted">
+            {{ object.posted|naturaltime }}
+          </small>
+        </h5>
+        <p>{{ object.content|safe }}</p>
+    </div>
+</li>
+{% else %}
+<h3 class="dvt-heading-bordered text-capitalize dvt-os-animation"
+    data-os-animation="fadeIn"
+    data-os-animation-delay=".3s">
+  Пока нет отзывов...
+</h3>
+{% endif %}
+
+</div>
+
 
 <script type="text/javascript">
     var form = $('#guest_form');

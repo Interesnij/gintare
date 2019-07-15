@@ -41,11 +41,14 @@
                                         <div class="col-md-12">
                                           {{ form.avatar.label }}
                                           {{ form.avatar }}
-                                          <button type="submit" class="btn btn-primary dvt-shadow-2">Изменить</button></div>
+                                        </div>
+                                        <div class="col-md-12">
+                                          <button type="submit" class="btn btn-primary dvt-shadow-2">Изменить</button>
+                                        </div>
                                     </div>
                                 </form>
                                 <br><br>
-                                <a href="{% url 'logout' %}" class="btn btn-primary dvt-shadow-2" data-bjax data-target="#content1" data-el="#content1">Выйти</a>
+                                <a href="{% url 'logout' %}" class="btn btn-danger btn-sm dvt-shadow-2 m-r-1" data-bjax data-target="#content1" data-el="#content1">Выйти</a>
                             </div>
                         </div>
                     </div>

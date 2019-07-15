@@ -2,5 +2,31 @@
 {% block title %}Выход{% endblock %}
 {% block content %}
 
+<div class="section" style="margin-top:150px">
+
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                      Выход
+                    </h1>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <h2>Выход</h2>
+                  <p>Вы успешно выполнили процедуру выхода с сайта.</p>
+                  <p><a href="{% url 'login' %}"
+                     data-bjax data-target="#content1" data-el="#content1">Войти снова</a></p>
+                  <p><a href="{% url 'main' %}"
+                     data-bjax data-target="#content1" data-el="#content1">На главную страницу</a></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

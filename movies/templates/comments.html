@@ -106,10 +106,9 @@
 
     <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation m-b-3"
         data-os-animation="fadeIn"
-        data-os-animation-delay=".3s"
-        onclick="return show_form('write_comment')">
+        data-os-animation-delay=".3s"><a onclick="return show_form('write_comment')">
         <small class="text-muted font-italic">Есть мысли?</small>
-        Напишите
+        Напишите </a>
     </h3>
 </div>
 
@@ -166,9 +165,6 @@
               }else{
                 $("#comment_form").prev().html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
-                p = $("#comment_form").next().next();
-
-                console.log(p);
                 $("#comment_form").appendTo($("#write_comment"));
                 $("#id_comment_area").removeClass('shot-form');
               };

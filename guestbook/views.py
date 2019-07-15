@@ -10,7 +10,7 @@ class GuestbookView(ArchiveIndexView,CategoryListMixin):
 	model=Guestbook
 	date_field="posted"
 	template_name="guestbook.html"
-	paginate_by=1
+	paginate_by=20
 	allow_empty=True
 	form=None
 	def get(self,request,*args,**kwargs):

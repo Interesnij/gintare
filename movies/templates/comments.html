@@ -27,12 +27,12 @@
             <div class="media-left">
               <a href="{% url 'profile-user' username=comment.author_id.username %}">
                 {% if comment.author_id.profile.avatar %}
-                <img class="media-object img-circle img-fluid"
+                <img class="media-object img-fluid"
                      src="{{ comment.author_id.profile.avatar.url }}"
                      alt="comments author"
                      style="width: 70px;">
                 {% else %}
-                <img class="media-object img-circle img-fluid"
+                <img class="media-object img-fluid"
                      src="{% static 'images/user.png' %}"
                      alt="user"
                      style="width: 70px;" />
@@ -70,7 +70,7 @@
                     </span>
                     &nbsp;&nbsp;
                     {% if request.user.is_authenticated and request.user != comment.author_id %}
-                      <a href="#"
+                      <a
                          id="reply_{{ comment.id }}"
                          onclick="return show_form({{ comment.id }})"
                          class="pull-xs-right">ответить
@@ -142,7 +142,7 @@
             $("#id_parent_comment").val('')
             $("#id_comment_area").removeClass('shot-form');
             $("#id_comment_area").val("");
-        } else {
+        } else { 
             $("#id_parent_comment").val(parent_comment_id);
             $("#id_comment_area").addClass('shot-form');
         }

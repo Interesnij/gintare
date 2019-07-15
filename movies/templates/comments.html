@@ -159,7 +159,7 @@
             url: "{% url 'add_comment' object.pk %}",
             data: form_comment.serialize(),
             success: function(data) {
-            parent = $('.leave-comment-text').parent().get(0).tagName.toLowerCase();
+            parent = $('.dvt-os-animation').parent().get(0).tagName.toLowerCase();
             console.log(parent);
               if(parent == 'div'){
                 $("#gigig").html('').load("{% url 'last_comment' %}");

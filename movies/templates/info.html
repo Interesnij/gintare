@@ -45,7 +45,7 @@
 <span class="desc-hidden">
 <span class="posted">
         <span class="fa fa-clock-o"></span>
-        <span style="font-size:18px;">{{ object.posted|date:"d E / Y" }}</span>
+        <span style="font-size:18px;">{{ object.posted|naturaltime }}</span>
     </span>
 
     <br><br>
@@ -58,7 +58,7 @@
           {% if request.user.is_authenticated %}
           data-tooltip="Мне нравится"
           {% else %}
-          data-tooltip="Войдите или зарегистрируйтесь"
+          data-tooltip="Войдите"
           {% endif %}>
         <span class="fa fa-thumbs-o-up"></span>
         <span data-count="like">{{ object.votes.likes.count }}</span>
@@ -71,7 +71,7 @@
           {% if request.user.is_authenticated %}
           data-tooltip="Мне не нравится"
           {% else %}
-          data-tooltip="Войдите или зарегистрируйтесь"
+          data-tooltip="Войдите"
           {% endif %}>
         <span class="fa fa-thumbs-o-down"></span>
         <span data-count="dislike">{{ object.votes.dislikes.count }}</span>

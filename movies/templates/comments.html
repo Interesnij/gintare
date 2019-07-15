@@ -84,7 +84,7 @@
 
         <script>
             $("#reply_{{ comment.id }}").click(function() {
-                var objectUser = $("#comment_form").prev().find(".comment-author").text().trim();
+                var objectUser = $("#comment_form").prev().find(".media-heading").text().trim();
                 $("#id_comment_area").val(objectUser + ', ')
             });
         </script>

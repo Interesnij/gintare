@@ -3,5 +3,53 @@
 
 {% block title %}Изменение профиля{% endblock %}
 {% block content %}
+<div class="section">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                          <small class="text-muted font-italic">Изменение профиля</small> {{ user.username }}</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                      <img src="{% static 'images/thankyou.png' %}" id="ess2" style="width:100%;display:none">
+                        <div id="ess" class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".6s">
+                            <div class="card-block">
+                                <form action="" id="feedback-form" method="post" class="contact-form">
+                                  {% csrf_token %}
+                                    <div class="row text-xs-center">
+                                        <div class="col-md-12">
+                                          <input
+                                            type="text"
+                                            value="{{ user.first_name }}"
+                                            name="first_name"
+                                            id="id_first_name"
+                                            class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2"
+                                            placeholder="Имя">
+                                        </div>
+                                        <div class="col-md-12">
+                                          <input
+                                            type="text"
+                                            value="{{ user.last_name }}"
+                                            name="last_name"
+                                            id="id_last_name"
+                                            class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2"
+                                            placeholder="Фамилия">
+                                        </div>
+                                        <div class="col-md-12">
+                                          {{ form.avatar.label }}
+                                          {{ form.avatar }}
+                                          <button type="submit" class="btn btn-primary dvt-shadow-2">Изменить</button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </div>
 {% endblock %}

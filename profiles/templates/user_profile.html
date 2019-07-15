@@ -4,4 +4,61 @@
 {% block title %}Мой профиль{% endblock %}
 {% block content %}
 
+<div class="section">
+
+    <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                      <small class="text-muted font-italic">Мой профиль</small>
+                      {{ user.username }}
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <div class="card card-horizontal card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".6s">
+                        <div class="row">
+                            <div class="col-lg-6 flex-lg-last">
+                                <div class="card-img-container">
+                                  {% if user.profile.avatar %}
+                                  <img class="card-img" src="{{ user.profile.avatar.url }}" alt="user" />
+                                  {% else %}
+                                  <img class="card-img" src="{% static 'images/user.png' %}" alt="user" />
+                                  {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 flex-lg-first">
+                                <div class="card-block">
+                                    <h2 class="card-title m-b-3">{{ user.username }}</h2>
+
+                                      {% if user.username %}
+                                      <p class="card-text lead">Пользователь: {{ user.username }}</p>
+                                      {% endif %}
+                                      {% if user.first_name %}
+                                      <p class="card-text lead">Имя: {{ user.first_name }}</p>
+                                      {% endif %}
+                                      {% if user.last_name %}
+                                      <p class="card-text lead">Фамилия: {{ user.last_name }}</p>
+                                      {% endif %}
+                                      {% if user.email %}
+                                      <p class="card-text lead">Почта: {{ user.email }}</p>
+                                      {% endif %}
+                                      <p class="card-text lead">Зарегистрирован: {{ user.date_joined }}</p>
+                                      <br>
+                                      <a href="{% url 'profile-identity-form' user.profile.pk %}"
+                                         class="btn btn-primary dvt-shadow-2" 
+                                         data-bjax data-target="#content1"
+                                         data-el="#content1">
+                                         Изменить
+                                       </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

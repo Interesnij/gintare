@@ -40,7 +40,7 @@
               </a>
             </div>
             <div class="media-body">
-                <h5 class="media-heading font-italic" id="aa">{{ comment.author_id.username }} -
+                <h5 class="media-heading font-italic"><span id="aa">{{ comment.author_id.username }} </span>-
                   <small class="text-muted">{{ comment.posted|naturaltime }}
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="like2 {% if comment.votes.likes.all|user_in:user %}text-success{% endif %}"

@@ -40,7 +40,7 @@
               </a>
             </div>
             <div class="media-body">
-                <h5 class="media-heading aa font-italic">{{ comment.author_id.username }} -
+                <h5 class="media-heading font-italic" id="aa">{{ comment.author_id.username }} -
                   <small class="text-muted">{{ comment.posted|naturaltime }}
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <span class="like2 {% if comment.votes.likes.all|user_in:user %}text-success{% endif %}"
@@ -84,7 +84,7 @@
 
         <script>
             $("#reply_{{ comment.id }}").click(function() {
-                var objectUser = $("#comment_form").prev().find(".aa").text().trim();
+                var objectUser = $("#comment_form").prev().find("#aa").text().trim();
                 $("#id_comment_area").val(objectUser + ', ')
             });
         </script>
@@ -116,9 +116,7 @@
 <div class="col-md-12">
     <form class="dvt-os-animation"
           id="comment_form"
-          method="post"
-          data-os-animation="fadeIn"
-          data-os-animation-delay=".3s">
+          method="post">
         <div class="form-group row">
             <div class="col-md-12">
               {{ form.parent_comment }}

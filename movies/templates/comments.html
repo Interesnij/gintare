@@ -166,6 +166,9 @@
               }else{
                 $("#comment_form").next().html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
+                p = $("#comment_form").next();
+
+                console.log(p);
                 $("#comment_form").appendTo($("#write_comment"));
                 $("#id_comment_area").removeClass('shot-form');
               };

@@ -6,13 +6,13 @@
     <div class="media-left">
       <a href="{% url 'profile-user' username=last_comment.author_id.username %}">
         {% if last_comment.author_id.profile.avatar %}
-        <img class="media-object img-fluid"
-             src="{{ last_comment.author_id.profile.avatar.url }}"
+        <img class="media-object img-fluid lazyload"
+             data-src="{{ last_comment.author_id.profile.avatar.url }}"
              alt="comments author"
              style="width: 70px;">
         {% else %}
-        <img class="media-object img-fluid"
-             src="{% static 'images/user.png' %}"
+        <img class="media-object img-fluid lazyload"
+             data-src="{% static 'images/user.png' %}"
              alt="user"
              style="width: 70px;" />
         {% endif %}

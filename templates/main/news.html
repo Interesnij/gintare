@@ -22,7 +22,7 @@
                             <div class="col-lg-4">
                                 <div class="card-img-container">
                                   {% if object.image %}
-                                  <img class="card-img" src="{{ object.image.url }}" alt="Card image">
+                                  <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
                                   {% endif %}
                                 </div>
                             </div>

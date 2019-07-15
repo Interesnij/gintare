@@ -16,7 +16,7 @@
             <li class="text-truncate">
               <a href="{% url 'movies_detail' pk=mov.pk %}" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title">
                 {% if mov.image %}
-                <img alt="post image" src="{{ mov.image.url }}">
+                <img alt="post image lazyload" data-src="{{ mov.image.url }}">
                 {% endif %}
               </a>
               <a href="{% url 'movies_detail' pk=mov.pk %}">{{ mov.title }}</a>

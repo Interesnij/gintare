@@ -28,9 +28,9 @@
                             <div class="col-lg-6 flex-lg-last">
                                 <div class="card-img-container">
                                   {% if user1.profile.avatar %}
-                                  <img class="card-img" src="{{ user1.profile.avatar.url }}" alt="user" />
+                                  <img class="card-img lazyload" data-src="{{ user1.profile.avatar.url }}" alt="user" />
                                   {% else %}
-                                  <img class="card-img" src="{% static 'images/user.png' %}" alt="user" />
+                                  <img class="card-img lazyload" data-src="{% static 'images/user.png' %}" alt="user" />
                                   {% endif %}
                                 </div>
                             </div>

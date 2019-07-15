@@ -60,7 +60,7 @@ a .tooltip:hover .tooltiptext {
                             <div class="card dvt-shadow-4 dvt-shadow-hover-8 dvt-transition m-x-1 m-t-1 dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                               {% if object.image %}
                                 <div class="card-img-container">
-                                  <img class="card-img-top" src="{{ object.image.url }}" alt="Card image cap">
+                                  <img class="card-img-top lazyload" data-src="{{ object.image.url }}" alt="Card image cap">
                                 </div>
                               {% endif %}
                                 <div class="card-block">

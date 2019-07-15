@@ -38,7 +38,7 @@
                                     class="pull-xs-left m-r-1 dvt-widget-image"
                                     title="Event title">
                                     {% if object.image %}
-                                      <img class="dvt-widget-image m-r-1 pull-xs-left" alt="post image" src="{{ object.image.url }}">
+                                      <img class="dvt-widget-image m-r-1 pull-xs-left lazyload" alt="post image" data-src="{{ object.image.url }}">
                                     {% endif %}
                                   </a>
                                   <a href="{% url 'news_detail' pk=object.pk %}"
@@ -63,7 +63,7 @@
                                 <li class="text-truncate">
                                   <a href="{% url 'movies_detail' pk=object.pk %}" class="pull-xs-left m-r-1 dvt-widget-image" title="{{ object.title }}">
                                     {% if object.image %}
-                                    <img src="{{ object.image.url }}" alt="Card image">
+                                    <img class="lazyload" data-src="{{ object.image.url }}" alt="Card image">
                                     {% endif %}
                                   </a>
                                   <a href="{% url 'movies_detail' pk=object.pk %}">{{ object.title }}</a>

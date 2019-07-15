@@ -65,9 +65,9 @@
                         <div class="media-left">
                             <a href="{% url 'profile-user' username=object.user.username %}">
                                 {% if object.user.profile.avatar %}
-                                <img class="media-object img-circle img-fluid" src="{{ object.user.profile.avatar.url }}" alt="comments author" style="width: 70px;">
+                                <img class="media-object img-circle img-fluid lazyload" data-src="{{ object.user.profile.avatar.url }}" alt="comments author" style="width: 70px;">
                                 {% else %}
-                                <img class="media-object img-circle img-fluid" src="{% static 'images/user.png' %}" alt="user" style="width: 70px;" />
+                                <img class="media-object img-circle img-fluid lazyload" data-src="{% static 'images/user.png' %}" alt="user" style="width: 70px;" />
                                 {% endif %}
                             </a>
                         </div>

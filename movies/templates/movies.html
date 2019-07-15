@@ -66,7 +66,11 @@
 	    span[data-tooltip]:hover:after, span[data-tooltip]:hover:before {
 	    display: block;
 	    }
-
+    @media all and (max-width: 543px) {
+    .mobi {
+           display:none;
+    }
+  }
 </style>
 
     <div class="section">
@@ -100,7 +104,7 @@
                             </div>
                             <div class="card-footer">
 
-                              <small class="text-muted">
+                              <small class="text-muted mobi">
                                 {% include 'info.html' %}
                               </small>
 

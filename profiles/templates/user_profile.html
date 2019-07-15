@@ -4,7 +4,7 @@
 {% block title %}Мой профиль{% endblock %}
 {% block content %}
 
-<div class="section">
+<div class="section" style="margin-top:50px">
 
     <div class="section-content">
         <div class="container">
@@ -46,7 +46,7 @@
                                       <p class="card-text lead">Зарегистрирован: {{ user.date_joined }}</p>
                                       <br>
                                       <a href="{% url 'profile-identity-form' user.profile.pk %}"
-                                         class="btn btn-primary dvt-shadow-2" 
+                                         class="btn btn-primary dvt-shadow-2"
                                          data-bjax data-target="#content1"
                                          data-el="#content1">
                                          Изменить

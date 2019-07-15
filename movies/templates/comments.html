@@ -164,7 +164,7 @@
                 $("#gigig").html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
               }else{
-                $("#comment_form").next().next().html('').load("{% url 'last_comment' %}");
+                $("#comment_form").prev().html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
                 p = $("#comment_form").next().next();
 

@@ -70,7 +70,7 @@
                     </span>
                     &nbsp;&nbsp;
                     {% if request.user.is_authenticated and request.user != comment.author_id %}
-                      <a
+                      <a style="cursor:pointer"
                          id="reply_{{ comment.id }}"
                          onclick="return show_form({{ comment.id }})"
                          class="pull-xs-right">ответить
@@ -129,7 +129,8 @@
             <div class="col-md-12">
               <input type="submit"
                      value="Отправить"
-                     class="btn btn-primary dvt-shadow-2 dvt-shadow-focus-4 dvt-transition">
+                     style="float:right"
+                     class="btn btn-secondary btn-sm dvt-shadow-2 m-r-1">
             </div>
         </div>
     </form>
@@ -142,7 +143,7 @@
             $("#id_parent_comment").val('')
             $("#id_comment_area").removeClass('shot-form');
             $("#id_comment_area").val("");
-        } else { 
+        } else {
             $("#id_parent_comment").val(parent_comment_id);
             $("#id_comment_area").addClass('shot-form');
         }

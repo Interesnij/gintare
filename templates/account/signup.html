@@ -3,6 +3,49 @@
 {% block title %}Регистрация{% endblock %}
 {% block content %}
 
+<div class="section">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                          Регистрация
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="ess" class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".6s">
+                            <div class="card-block">
+                                <form id="signup" action="{% url 'rest_register' %}" class="contact-form ajax-post">
+                                  {% csrf_token %}
+                                    <div class="row text-xs-center">
+
+                                        <div class="col-md-12">
+                                          <input type="text" name="username" id="username" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Логин">
+                                        </div>
+
+                                        <div class="col-md-12">
+                                          <input type="password" name="password1" id="password1" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Пароль">
+                                        </div>
+
+                                          <div class="col-md-12">
+                                            <input type="password" name="password2" id="password2" class="form-control dvt-shadow-2 dvt-shadow-focus-4 dvt-transition m-b-2" placeholder="Повторите пороль">
+
+                                          <button type="submit" class="btn btn-primary dvt-shadow-2">Регистрация</button>
+                                        </div>
+
+                                        <a href="{% url 'signup' %}" style="margin-top:50px">Есть аккаунт?</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 <script type="text/javascript">
   var error_response = function(data){
     $('.api-response').html("Что-то пошло не так... ");

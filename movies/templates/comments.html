@@ -81,7 +81,7 @@
                 <p>{{ comment.content|safe }}</p>
             </div>
         </li>
-
+        <span></span>
         <script>
             $("#reply_{{ comment.id }}").click(function() {
                 var objectUser = $("#comment_form").prev().find("#aa").text().trim();
@@ -158,12 +158,12 @@
             data: form_comment.serialize(),
             success: function(data) {
             parent = $('.media-left').parent().get(0).tagName.toLowerCase();
-            console.log(parent);
+
               if(parent == 'div'){
                 $("#gigig").html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
               }else{
-                $("#comment_form").prev().html('').load("{% url 'last_comment' %}");
+                $("#comment_form").prev('span').html('').load("{% url 'last_comment' %}");
                 $("#comment_form").trigger('reset');
                 $("#comment_form").appendTo($("#write_comment"));
                 $("#id_comment_area").removeClass('shot-form');

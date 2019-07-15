@@ -22,7 +22,7 @@
         data-os-animation-delay=".3s">
 
       {% for comment in comments %}
-        <li class="media m-t-3" id="{{ comment.id }}">
+        <li class="comment-item media m-t-3" id="{{ comment.id }}">
             <a style="opacity:0;padding:0" name="comment-{{ comment.id }}"></a>
             <div class="media-left">
               <a href="{% url 'profile-user' username=comment.author_id.username %}">

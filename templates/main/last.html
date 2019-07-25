@@ -53,9 +53,6 @@
 
 {% if movie2 %}
 <div class="section">
-    <div class="section-background">
-        <div class="section-bg-image section-bg-image-size-md-cover section-bg-image-position-md-top section-bg-image-paralax dvt-opacity-5 dvt-demo-bg-image-3"></div>
-    </div>
     <div class="section-content">
         <div class="container">
             <div class="row">
@@ -72,11 +69,10 @@
                                 data-os-animation="fadeIn"
                                 data-os-animation-delay=".4s">
                         <div class="card-img-container">
-                          <div class="card-img-container">
-                            {% if object.image %}
-                            <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
-                            {% endif %}
-                          </div>
+                          {% if object.image %}
+                          <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
+                          {% endif %}
+                        </div>
                         <div class="card-block">
                             <h4 class="card-title m-b-2">
                               <a href="{% url 'movies_detail' pk=object.pk %}"
@@ -89,6 +85,7 @@
                               <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
                               <span class="fa fa-thumbs-o-up"></span>
                               <span data-count="like">{{ object.votes.likes.count }}</span>
+                              &nbsp;
                               <span class="fa fa-thumbs-o-down"></span>
                               <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
                               <span class="fa fa-eye"></span>
@@ -96,9 +93,8 @@
                             </h6>
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
-
+                {% endfor %}
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 {% load staticfiles humanize %}
 
 <div class="col-md-3 sidebar m-t-25">
+  <!--
     <div class="dvt-widget widget_search">
         <form action="" id="searchform" method="get" name="searchform">
             <div class="input-group">
@@ -9,12 +10,13 @@
                 <button class="btn btn-primary" type="button">Искать</button></span></div>
         </form>
     </div>
+  -->
     <div class="dvt-widget widget_recent_entries">
         <h4 class="dvt-widget-header">Ролики плейлиста</h4>
         <ul style="max-height:800px;overflow:auto;">
           {% for mov in object.get_moovies %}
             <li class="text-truncate">
-              <a href="{% url 'movies_detail' pk=mov.pk %}" class="pull-xs-left m-r-1 dvt-widget-image" title="Post title">
+              <a href="{% url 'movies_detail' pk=mov.pk %}" class="pull-xs-left m-r-1 dvt-widget-image" title="{{ mov.title }}">
                 {% if mov.image %}
                 <img alt="post image" class="lazyload" data-src="{{ mov.image.url }}">
                 {% endif %}

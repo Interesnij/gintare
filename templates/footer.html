@@ -14,7 +14,7 @@
                     <div class="col-md-4">
                         <div class="dvt-widget widget_text">
                             <h4 class="dvt-widget-header">Плейлисты</h4>
-                            <ul class="footer_list">
+                            <ul style="list-style-type: none;">
                               {% for object in categories %}
                                 <li>
                                   <a href="{% url 'movies_index' pk=object.pk %}"

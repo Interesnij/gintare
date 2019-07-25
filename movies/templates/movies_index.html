@@ -64,7 +64,7 @@ a .tooltip:hover .tooltiptext {
                                 </div>
                               {% endif %}
                                 <div class="card-block">
-                                    <h3 class="card-title">
+                                    <h3 class="card-title" title="{{ object.title }}" style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis">
                                       <a href="{% url 'movies_detail' pk=object.pk %}">{{ object.title }}</a>
                                     </h3>
                                     <h6 class="card-subtitle font-italic text-muted">

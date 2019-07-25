@@ -57,7 +57,10 @@ a .tooltip:hover .tooltiptext {
                         <div class="card-columns m-b-9">
                           {% if object_list %}
                           {% for object in latest %}
-                            <div class="card dvt-shadow-4 dvt-shadow-hover-8 dvt-transition m-x-1 m-t-1 dvt-os-animation" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                            <div class="card dvt-shadow-4 dvt-shadow-hover-8 dvt-transition m-x-1 m-t-1 dvt-os-animation"
+                                 data-os-animation="fadeIn"
+                                 data-os-animation-delay=".3s"
+                                 style="display: list-item;list-style-type:none">
                               {% if object.image %}
                                 <div class="card-img-container">
                                   <img class="card-img-top lazyload" data-src="{{ object.image.url }}" alt="Card image cap">
@@ -67,7 +70,7 @@ a .tooltip:hover .tooltiptext {
                                     <h5 class="card-title" title="{{ object.title }}">
                                       <a href="{% url 'movies_detail' pk=object.pk %}">{{ object.title }}</a>
                                     </h5>
-                                    <h6 class="card-subtitle font-italic text-muted" style="text-align: center;margin-top:10px">
+                                    <h6 class="card-subtitle font-italic text-muted" style="text-align: center;margin-top:15px">
                                       <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
                                       <br>
                                       <span class="fa fa-thumbs-o-up" style="margin-top:5px"></span>

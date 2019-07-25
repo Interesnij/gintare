@@ -67,8 +67,8 @@ a .tooltip:hover .tooltiptext {
                                     <h3 class="card-title" title="{{ object.title }}">
                                       <a href="{% url 'movies_detail' pk=object.pk %}">{{ object.title }}</a>
                                     </h3>
-                                    <h6 class="card-subtitle font-italic text-muted" style="text-align: center;">
-                                      <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }} |
+                                    <h6 class="card-subtitle font-italic text-muted" style="text-align: center;margin-top:10px">
+                                      <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
                                       <br>
                                       <span class="fa fa-thumbs-o-up" style="margin-top:5px"></span>
                                       <span data-count="like">{{ object.votes.likes.count }}</span>

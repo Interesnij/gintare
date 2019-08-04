@@ -21,7 +21,7 @@ class Movie(models.Model):
     tags=TaggableManager(blank=True,verbose_name="Теги")
     user=models.ForeignKey(User, on_delete=models.CASCADE,default=timezone.now)
     views=models.IntegerField(default=0,verbose_name="Просмотры")
-    image = models.ImageField(upload_to="movies/%Y/%m/%d", blank=True)
+    image = models.ImageField(upload_to="movies/%Y/%m/%d", blank=True, verbose_name="Главное изображение")
     votes = GenericRelation(LikeDislike, related_query_name='articles')
 
 

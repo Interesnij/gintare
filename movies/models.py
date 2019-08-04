@@ -8,13 +8,14 @@ from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
 from main.models import LikeDislike
 from django.contrib.postgres.fields import ArrayField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Movie(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE,verbose_name="Категория",null=True)
     title=models.CharField(max_length=100,verbose_name="Заголовок")
     description=models.CharField(max_length=300,blank=True,verbose_name="Краткое содержание")
-    content=models.TextField(verbose_name="Полное содержание")
+    content=models.RichTextUploadingField(default='', verbose_name="Полное содержание")
     link=models.CharField(max_length=200,null=True,blank=True,verbose_name="Ссылка на видео в Youtube")
     posted=models.DateTimeField(default=timezone.now,verbose_name="Опубликовано")
     tags=TaggableManager(blank=True,verbose_name="Теги")

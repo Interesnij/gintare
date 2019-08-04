@@ -45,10 +45,23 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     'user',
     'profiles',
-    #'django_cleanup',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 SITE_ID = 1
+
+CKEDITOR_UPLOAD_PATH = 'media/'
+
+CKEDITOR_CONFIGS = {
+       'default': {
+           'toolbar': None,
+           'height': 400,
+           'width': 900,
+           'removePlugins': 'stylesheetparser',
+           'extraPlugins': 'codesnippet',
+       },
+    }
 
 FILE_UPLOAD_MAX_MEMORY_SIZE = 100000000
 FILE_UPLOAD_PERMISSIONS  = 0o644

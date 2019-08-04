@@ -78,7 +78,7 @@
                           <iframe class="youtube" src="https://www.youtube.com/embed/{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
                           {% else %}
                           {% if object.image %}
-                          <img class="card-img lazyload" data-src="assets/images/divinity/divinity-02-800x500.jpg" alt="Card image">
+                          <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
                           {% endif %}
                           {% endif %}
                             <div class="card-block">

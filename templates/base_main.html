@@ -3,6 +3,10 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		{% block meta %}{% endblock %}
+		<meta name="description" content="Блог на историческую и археологическую тематику" />
+		<meta name="keywords" content="Интересные научные работы, на статьи известных историков и современных археологов" />
 		<title>{% block title %}{% endblock %}</title>
 		<link rel="stylesheet" href="{% static 'styles/animate.min.css' %}" type='text/css' media='all' />
 		<link rel="stylesheet" href="{% static 'styles/history.min.css' %}" />
@@ -18,6 +22,6 @@
 
 		{% include "footer.html" %}
 		{% include 'scripts.html' %}
-		
+
 	</body>
 </html>

@@ -80,10 +80,9 @@
                         <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                           {% if object.link  %}
                           <iframe class="youtube" src="https://www.youtube.com/embed/{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
-                          {% else %}
-                          {% if object.image %}
-                          <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
                           {% endif %}
+                          {% if object.image and not object.link %}
+                          <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
                           {% endif %}
                             <div class="card-block">
                                 <h5 class="h2 card-title" style="font-size: 22px;">{{ object.title}}</h5>

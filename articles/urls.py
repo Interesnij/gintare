@@ -8,7 +8,6 @@ from .models import AMovie, AComment
 from .views import a_add_comment
 
 urlpatterns=[
-	url(r'^$', ACategoriesEdit.as_view(), name="a_categories_edit"),
     url(r'^(?P<pk>\d+)/$',AMovieListView.as_view(), name="a_movies_index"),
     url(r'^(?P<pk>\d+)/detail/$',AMovieDetailView.as_view(), name="a_detail"),
     url(r'^like/(?P<pk>\d+)/$',login_required(VotesView.as_view(model=AMovie, vote_type=LikeDislike.LIKE)),name='a_article_like'),

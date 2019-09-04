@@ -13,6 +13,9 @@
   height: 25em;
   max-height: 100%;
 }
+.link-vk{
+  color:#5A7EA1
+}
 .like,
 .dislike {
     font-size: 16px;
@@ -76,7 +79,7 @@
         <div class="section-content">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 m-t-25">
+                    <div class="col-md-8 m-t-25">
                         <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                           {% if object.link  %}
                           <iframe class="youtube" src="https://www.youtube.com/embed/{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
@@ -95,7 +98,7 @@
 
                                   {% endwith %}
                                 </h5>
-                                <p>{{ object.content|safe }}</p>
+                                <p class="link-vk">{{ object.content|safe }}</p>
                             </div>
                             <div class="card-footer">
 

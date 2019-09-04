@@ -158,7 +158,7 @@
             data: form_comment.serialize(),
             success: function(data) {
             parent = $('.media-left').parent().get(0).tagName.toLowerCase();
-
+            console.log(parent);
               if(parent == 'div'){
                 $("#gigig").html('').load("{% url 'a_last_comment' %}");
                 $("#comment_form").trigger('reset');

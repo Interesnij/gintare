@@ -1,0 +1,106 @@
+{% load staticfiles humanize liked_user %}
+<br><br><br>
+
+<div class="mb-80 mb-xs-40">
+    <h4 class="blog-page-title font-alt">
+        Комментарии
+        <small class="number">&nbsp;({{ comments.count }})</small>
+    </h4>
+    <ul class="media-list text comment-list clearlist">
+        {% for comment in comments %}
+        <li class="media comment-item">
+            <a name="comment-{{ comment.id }}"></a>
+            <div class="row" id="{{ comment.id }}">
+                <div class="col-md-{{ comment.get_col }}
+                      col-md-offset-{{ comment.get_offset }}">
+                    <a class="pull-left" href="{% url 'profile-user' username=comment.author_id.username %}" data-bjax data-target="#content1" data-el="#content1">
+                      {% if comment.author_id.profile.avatar %}
+                        <img class="media-object comment-avatar" src="{{ comment.author_id.profile.avatar.url }}" alt="comment-avatar" />
+                      {% else %}
+                        <img class="media-object comment-avatar" src="{% static 'images/user.png' %}" alt="user" />
+                      {% endif %}
+                    </a>
+                    <div class="media-body">
+                        <div class="comment-item-data">
+                            <div class="comment-author">
+                                <a href="{% url 'profile-user' username=comment.author_id.username %}" data-bjax data-target="#content1" data-el="#content1">
+                                    {{ comment.author_id.username }}
+                                </a>
+                            </div>
+                            <span class="hidden-xs">
+                              {{ comment.posted|naturaltime }}
+                              <span class="separator">&mdash;</span>
+                            </span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="like2 {% if comment.votes.likes.all|user_in:user %}text-success{% endif %}"
+                                  data-id="{{ comment.id }}"
+                                  data-action="like2"
+                                  data-type="comment"
+                                  {% if request.user.is_authenticated %}
+                                  data-tooltip="Мне нравится"
+                                  {% else %}
+                                  data-tooltip="Войдите или зарегистрируйтесь"
+                                  {% endif %}>
+                                <span class="fa fa-thumbs-o-up"></span>
+                                <span data-count="like">{{ comment.votes.likes.count }}</span>
+                            </span>
+                            &nbsp;&nbsp;
+                            <span class="dislike2 {% if comment.votes.dislikes.all|user_in:user %}text-danger{% endif %}"
+                                  data-id="{{ comment.id }}"
+                                  data-action="dislike2"
+                                  data-type="comment"
+                                  {% if request.user.is_authenticated %}
+                                  data-tooltip="Мне не нравится"
+                                  {% else %}
+                                  data-tooltip="Войдите или зарегистрируйтесь"
+                                  {% endif %}>
+                                <span class="fa fa-thumbs-o-down"></span>
+                                <span data-count="dislike">{{ comment.votes.dislikes.count }}</span>
+                            </span>
+                            {% if request.user.is_authenticated and request.user != comment.author_id %}
+                            &nbsp;&nbsp;
+                            <a class="reply" style="text-decoration:none;font-size:16px" id="reply_{{ comment.id }}" onclick="return show_form({{ comment.id }})">
+                              Ответить
+                            </a>
+                            {% endif %}
+                        </div>
+                        <p style="margin-bottom:1em;">{{ comment.content|safe }}</p>
+                        <span class="visible-xs" style="font-size:12px;color:#777;">
+                          {{ comment.posted|naturaltime }}
+                          <span class="separator">&mdash;</span>
+                      </span>
+                    </div>
+                </div>
+            </div>
+            <a style="opacity:0" href="#comment-{{ comment.id }}">#</a>
+        </li>
+        <script>
+            $("#reply_{{ comment.id }}").click(function() {
+                var objectUser = $("#comment_form").prev().find(".comment-author").text().trim();
+                $("#id_comment_area").val(objectUser + ', ')
+            });
+        </script>
+        {% endfor %}
+        <div id="gigig"></div>
+    </ul>
+    <br><br><br>
+
+    {% if not request.user.is_authenticated %}
+    <p>Только авторизованные пользователи могут оставлять комментарии. Пожалуйста,
+        <a href="{% url 'login' %}" data-bjax data-target="#content1" data-el="#content1">Авторизуйтесь</a>
+        или
+        <a href="{% url 'signup' %}" data-bjax data-target="#content1" data-el="#content1">Зарегистрируйтесь</a>
+    </p>
+    {% else %}
+    <h3 id="write_comment">
+        <a onclick="return show_form('write_comment')">Написать комментарий</a>
+    </h3>
+    <form id="comment_form" class="form post_comments" method="post">
+        {% csrf_token %}
+        {{ form.parent_comment }}
+        {{ form.comment_area }}
+        <br>
+        <button type="submit" class="btn btn-mod btn-gray btn-round" style="float:right;">Отправить</button>
+    </form>
+    {% endif %}
+</div>

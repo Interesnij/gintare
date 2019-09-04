@@ -1,0 +1,90 @@
+<script>
+    function show_form(parent_comment_id) {
+        if (parent_comment_id == 'write_comment') {
+            $("#id_parent_comment").val('')
+            $("#id_comment_area").removeClass('shot-form');
+            $("#id_comment_area").val("");
+        } else {
+            $("#id_parent_comment").val(parent_comment_id);
+            $("#id_comment_area").addClass('shot-form');
+        }
+        $("#comment_form").insertAfter("#" + parent_comment_id);
+        $("#id_comment_area").focus();
+    }
+</script>
+
+<script type="text/javascript">
+    var form_comment = $('#comment_form');
+    form_comment.submit(function() {
+        $.ajax({
+            type: form_comment.attr('method'),
+            url: "{% url 'a_add_comment' object.pk %}",
+            data: form_comment.serialize(),
+            success: function(data) {
+            parent = $('.post_comments').parent().get(0).tagName.toLowerCase();
+              if(parent == 'div'){
+                $("#gigig").html('').load("{% url 'a_last_comment' %}");
+                $("#comment_form").trigger('reset');
+              }else{
+                $("#comment_form").parent('.comment-item').next().html('').load("{% url 'a_last_comment' %}");
+                $("#comment_form").trigger('reset');
+                $("#comment_form").appendTo($("#write_comment"));
+                $("#id_comment_area").removeClass('shot-form');
+              };
+            },
+            error: function(data) {
+                $("#message").html("ошибка!!");
+                console.log('Ошибка');
+            }
+        });
+        return false;
+    });
+</script>
+<script>
+    function like2() {
+        var like = $(this);
+        var type = like.data('type');
+        var pk = like.data('id');
+        var action = like.data('action');
+        var dislike = like.next();
+        $.ajax({
+            url: "/articles/comment/" + pk + "/like/",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.addClass("text-success");
+                dislike.removeClass("text-danger");
+            }
+        });
+        return false;
+    }
+
+    function dislike2() {
+        var dislike = $(this);
+        var type = dislike.data('type');
+        var pk = dislike.data('id');
+        var action = dislike.data('action');
+        var like = dislike.prev();
+        $.ajax({
+            url: "/articles/comment/" + pk + "/dislike/",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.addClass("text-danger");
+                like.removeClass("text-success");
+            }
+        });
+        return false;
+    }
+    // Подключение обработчиков
+    $('[data-action="like2"]').click(like2);
+    $('[data-action="dislike2"]').click(dislike2);
+</script>

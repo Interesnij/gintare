@@ -1,0 +1,127 @@
+{% load staticfiles humanize liked_user %}
+
+<span class="mobi-hidden">
+    <span class="posted">
+        <span class="fa fa-clock-o"></span>
+        <span style="font-size:18px;">{{ object.posted|naturaltime }}</span>
+    </span>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <span id="like"
+          class="like {% if object.votes.likes.all|user_in:user %}text-success{% endif %}"
+          data-id="{{ object.id }}"
+          data-action="like"
+          data-type="article"
+          {% if request.user.is_authenticated %}
+          data-tooltip="Мне нравится"
+          {% else %}
+          data-tooltip="Войдите или зарегистрируйтесь и ставьте лайки"
+          {% endif %}>
+        <span class="fa fa-thumbs-o-up"></span>
+        <span data-count="like">{{ object.votes.likes.count }}</span>
+    </span>
+    &nbsp;&nbsp;
+    <span class="dislike {% if object.votes.dislikes.all|user_in:user %}text-danger{% endif %}"
+          data-id="{{ object.id }}"
+          data-action="dislike"
+          data-type="article"
+          {% if request.user.is_authenticated %}
+          data-tooltip="Мне не нравится"
+          {% else %}
+          data-tooltip="Войдите или зарегистрируйтесь и ставьте дизлайки"
+          {% endif %}>
+        <span class="fa fa-thumbs-o-down"></span>
+        <span data-count="dislike">{{ object.votes.dislikes.count }}</span>
+    </span>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span class="views">
+        <span class="fa fa-eye"></span>
+        <span>{{ object.views }}</span>
+    </span>
+</span>
+
+<span class="desc-hidden">
+<span class="posted">
+        <span class="fa fa-clock-o"></span>
+        <span style="font-size:18px;">{{ object.posted|naturaltime }}</span>
+    </span>
+
+    <br><br>
+    {% load liked_user %}
+    <span id="like"
+          class="like {% if object.votes.likes.all|user_in:user %}text-success{% endif %}"
+          data-id="{{ object.id }}"
+          data-action="like"
+          data-type="article"
+          {% if request.user.is_authenticated %}
+          data-tooltip="Мне нравится"
+          {% else %}
+          data-tooltip="Войдите"
+          {% endif %}>
+        <span class="fa fa-thumbs-o-up"></span>
+        <span data-count="like">{{ object.votes.likes.count }}</span>
+    </span>
+    &nbsp;&nbsp;
+    <span class="dislike {% if object.votes.dislikes.all|user_in:user %}text-danger{% endif %}"
+          data-id="{{ object.id }}"
+          data-action="dislike"
+          data-type="article"
+          {% if request.user.is_authenticated %}
+          data-tooltip="Мне не нравится"
+          {% else %}
+          data-tooltip="Войдите"
+          {% endif %}>
+        <span class="fa fa-thumbs-o-down"></span>
+        <span data-count="dislike">{{ object.votes.dislikes.count }}</span>
+    </span>
+</span>
+
+<script>
+    function like() {
+        var like = $(this);
+        var type = like.data('type');
+        var pk = like.data('id');
+        var action = like.data('action');
+        var dislike = like.next();
+        $.ajax({
+            url: "{% url 'article_like' pk=object.pk %}",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                like.find("[data-count='like']").text(json.like_count);
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                $(".like").addClass("text-success");
+                $(".dislike").removeClass("text-danger");
+            }
+        });
+        return false;
+    }
+    function dislike() {
+        var dislike = $(this);
+        var type = dislike.data('type');
+        var pk = dislike.data('id');
+        var action = dislike.data('action');
+        var like = dislike.prev();
+        $.ajax({
+            url: "{% url 'article_dislike' pk=object.pk %}",
+            type: 'POST',
+            data: {
+                'obj': pk
+            },
+            success: function(json) {
+                dislike.find("[data-count='dislike']").text(json.dislike_count);
+                like.find("[data-count='like']").text(json.like_count);
+                $(".dislike").addClass("text-danger");
+                $(".like").removeClass("text-success");
+            }
+        });
+        return false;
+    }
+    // Подключение обработчиков
+    $('[data-action="like"]').click(like);
+    $('[data-action="dislike"]').click(dislike);
+</script>

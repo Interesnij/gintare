@@ -1,0 +1,57 @@
+{% extends "base_main.html" %}
+{% load staticfiles humanize liked_user %}
+{% block title %}{{ object.category.name }} :: {{ object.title }}{% endblock %}
+{% block content %}
+
+
+<section class="page-section">
+    <div class="container relative ">
+        <div class="row">
+            <div class="col-sm-8 ppp">
+                <div class="blog-item" id="posts2">
+
+                    {% if object.link  %}
+                    <div class="blog-media">
+                      <iframe width="1017" height="460" src="{{ object.link }}?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <br>
+                    <h2 class="blog-item-title font-alt">{{ object.title}}</h2>
+                    <br>
+                    {% endif %}
+                    {% with names=object.tags.names %}
+                    {% if names.count > 0 %}
+                    <span class="tags" style="font-size:18px;color:black">
+                        Теги:&nbsp;
+                        {% for name in names %}
+                        <a href="{% url 'movies_index' pk=object.category.pk %}?tag={{ name|urlencode }}" data-bjax data-target="#content1" data-el="#content1">
+                            {{ name }}
+                        </a>
+                        {% endfor %}
+                    </span>
+                    {% endif %}
+                    {% endwith %}
+                    <br><br>
+
+                    <div class="blog-item-body">{{ object.content|safe }}</div>
+                    <br><br>
+
+                    {% include 'info.html' %}
+                  </div>
+                    {% include 'comments.html' %}
+                    <script>
+                    $(document).ready(function(){
+                      document.location.href='#';
+                    });
+                    </script>
+            </div>
+
+            {% include 'sidebar.html' %}
+
+        </div>
+
+    </div>
+    {% include 'script_movie.html' %}
+</section>
+
+
+{% endblock %}

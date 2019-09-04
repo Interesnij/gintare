@@ -1,0 +1,27 @@
+{% load staticfiles humanize %}
+
+<div class="col-sm-4 col-md-3 sidebar">
+
+    <div class="widget">
+        <h5 class="widget-title font-alt">Ролики плейлиста</h5>
+        <div class="widget-body" >
+            <ul class="clearlist widget-posts" style="max-height:1200px;overflow:auto;">
+                {% for mov in object.get_moovies %}
+                {% url 'movies_detail' pk=mov.pk as movies_url %}
+
+                <li {% if movies_url == current_url %}class="clearfix active" {% else %} class="clearfix" {% endif %}>
+                    <a href="{% url 'movies_detail' pk=mov.pk %}" data-bjax data-target=".ppp" data-el=".ppp">
+                        {% if mov.image %}
+                        <img class="lazyload" data-src="{{ mov.image.url }}" alt="" class="widget-posts-img" />
+                        {% endif %}
+                    </a>
+                    <div class="widget-posts-descr">
+                        <a href="{% url 'movies_detail' pk=mov.pk %}" data-bjax data-target=".ppp" data-el=".ppp">{{ mov.title|safe }}</a>
+                        {{ mov.posted|naturaltime }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+{% extends "base_main.html" %}
+{% load staticfiles humanize %}
+{% block title %}
+  {% if tag %}
+    Вы выбрали тег "{{ tag }}"
+  {% endif %}
+  {% if not tag %}
+    {{ category.name }}
+  {% endif %}
+{% endblock %}
+{% block content %}
+<style>
+a .tooltip {
+    position: relative;
+    display: inline-block;
+    opacity:1;
+}
+a .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 350px;
+    background-color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    top: 40px;
+    border:1px #969696 solid;
+    display: block;
+    z-index: 100000;
+}
+a .tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+</style>
+
+<div class="section">
+        <div class="section-content">
+            <div class="container">
+              <div class="row">
+                {% if tag %}
+                  <div class="col-md-12">
+                      <h3 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                         тег "{{ tag }}"</h3>
+                  </div>
+                {% else %}
+                <div class="col-md-12">
+                    <h3 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-25 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                       {{ category.name }}</h3>
+                </div>
+                {% endif %}
+              </div>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="card-columns m-b-9">
+                        {% if object_list %}
+                        {% for object in latest %}
+                          <div class="card dvt-shadow-4 dvt-shadow-hover-8 dvt-transition m-x-1 m-t-1 dvt-os-animation"
+                               data-os-animation="fadeIn"
+                               data-os-animation-delay=".3s">
+                            {% if object.image %}
+                              <div class="card-img-container">
+                                <img class="card-img-top lazyload" data-src="{{ object.image.url }}" alt="Card image cap">
+                              </div>
+                            {% endif %}
+                              <div class="card-block">
+                                  <h5 class="card-title" title="{{ object.title }}">
+                                    <a href="{% url 'a_detail' pk=object.pk %}">{{ object.title }}</a>
+                                  </h5>
+                                  <h6 class="card-subtitle font-italic text-muted" style="text-align: center;margin-top:15px">
+                                    <span class="fa fa-clock-o"></span> {{ object.posted|naturaltime }}
+                                    <br>
+                                    <span class="fa fa-thumbs-o-up" style="margin-top:5px"></span>
+                                    <span data-count="like">{{ object.votes.likes.count }}</span>
+                                    &nbsp;
+                                    <span class="fa fa-thumbs-o-down"></span>
+                                    <span data-count="dislike">{{ object.votes.dislikes.count }}</span> |
+                                    <span class="fa fa-eye"></span>
+                                    <span>{{ object.views }}</span>
+                                  </h6>
+                              </div>
+                          </div>
+                        {% endfor %}
+                        {% else %}
+                        <h3 style="text-align:center">Статей пока нет :-)</h3>
+                        {% endif %}
+                      </div>
+                  </div>
+              </div>
+              {% if paginator.num_pages > 1 %}
+              <div class="row">
+                {% if page_obj.has_previous %}
+                  <div class="col-md-6 col-xs-6">
+                      <h3 class="dvt-heading-bordered text-capitalize dvt-os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".3s">
+                        <a href="?page={{ page_obj.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}">
+                          <small class="text-muted font-italic">&larr; Раньше</small> Более новые статьи
+                        </a>
+                      </h3>
+                  </div>
+                {% endif %}
+                {% if page_obj.has_next %}
+                  <div class="col-md-6 col-xs-6">
+                      <h3 class="dvt-heading-bordered dvt-heading-bordered-reversed text-capitalize dvt-os-animation" data-os-animation="fadeInUp" data-os-animation-delay=".6s">
+                        <a href="?page={{ page_obj.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}">
+                          <small class="text-muted font-italic">Позднее &rarr;</small> Более старые статьи
+                        </a>
+                      </h3>
+                  </div>
+                {% endif %}
+              </div>
+              {% endif %}
+            </div>
+        </div>
+</div>
+
+{% endblock %}

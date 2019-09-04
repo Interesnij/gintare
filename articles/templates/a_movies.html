@@ -1,0 +1,143 @@
+{% extends "base_main.html" %}
+{% load staticfiles humanize liked_user %}
+{% block title %}{{ object.category.name }} :: {{ object.title }}{% endblock %}
+{% block meta %}
+<meta property="og:title" content="{{ object.title }}" />
+<meta property="og:image" content="http://история-интересно.рф{{ object.image.url }}" />
+{% endblock %}
+{% block content %}
+
+<style>
+.like,
+.dislike {
+    font-size: 16px;
+    cursor: pointer;
+}
+.like2,
+.dislike2 {
+    cursor: pointer;
+    font-size: 16px;
+}
+.views,
+.posted {
+    font-size: 16px;
+}
+.text-success {
+    color: #41cd52 !important;
+}
+.text-danger {
+    color: #FF0000 !important;
+}
+.shot-form{
+  margin-top: 20px;
+	}
+	  span {
+	  position:relative;
+	}
+	span[data-tooltip]:before {
+	  position: absolute;
+	  left: 0;
+	  top: -100px;
+	  background-color: #372811;
+	  color: #ffffff;
+	  line-height: 30px;
+	  border-radius: 5px;
+	  padding: 0 15px;
+	  content: attr(data-tooltip);
+	  display: none;
+	  white-space: nowrap;
+	  height: 30px;
+	  top: -40px;
+	}
+	    span[data-tooltip]:after {
+	    position: absolute;
+	    left: 15px;
+	    top: -10px;
+	    border-top: 7px solid #372811;
+	      border-left: 7px solid transparent;
+	      border-right: 7px solid transparent;
+	    content: "";
+	    display: none;
+	    }
+	    span[data-tooltip]:hover:after, span[data-tooltip]:hover:before {
+	    display: block;
+	    }
+</style>
+
+    <div class="section">
+        <div class="section-background background-media">
+            <div class="section-bg-image section-bg-image-size-lg-contain section-bg-image-position-xs-top section-bg-image-paralax dvt-demo-bg-image-8"></div>
+        </div>
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 m-t-25">
+                        <div class="card card-hero dvt-shadow-8 dvt-shadow-hover-16 dvt-transition dvt-os-animation m-b-9" data-os-animation="fadeIn" data-os-animation-delay=".3s">
+                          {% if object.image %}
+                          <img class="card-img lazyload" data-src="{{ object.image.url }}" alt="Card image">
+                          {% endif %}
+                            <div class="card-block">
+                                <h5 class="h2 card-title" style="font-size: 22px;">{{ object.title}}</h5>
+                                <h5 class="card-subtitle font-italic m-b-5">
+                                  {% with names=object.tags.names %}
+
+                                  {% for name in names %}
+                                  <a href="{% url 'a_index' pk=object.category.pk %}?tag={{ name|urlencode }}" class="text-muted">{{ name }}</a>&nbsp;&nbsp;
+                                  {% endfor %}
+
+                                  {% endwith %}
+                                </h5>
+                                <p>{{ object.content|safe }}</p>
+                            </div>
+                            <div class="card-footer">
+
+                              <small class="text-muted">
+                                {% include 'info.html' %}
+                              </small>
+
+                              <div class="dvt-icon-set dvt-icon-set-expandable dvt-transition pull-xs-right">
+                                <a class="dvt-icon-set-item dvt-icon-set-item-trigger text-muted" href="1">
+                                  <i class="fa fa-share-alt"></i>
+                                </a>
+                                <a class="dvt-icon-set-item dvt-icon-set-item-close dvt-transition"
+                                   href="2">
+                                  <i class="fa fa-close"></i>
+                                </a>
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="http://vk.com/share.php?url=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
+                                  <i class="fa fa-vk"></i>
+                                </a>
+
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="https://www.facebook.com/sharer/sharer.php?u=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank"
+                                   rel="nofollow"">
+                                  <i class="fa fa-facebook"></i>
+                                </a>
+                                <a class="dvt-icon-set-item text-muted dvt-transition"
+                                   href="https://twitter.com/share?url=http://история-интересно.рф{{ object.get_absolute_url }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank"
+                                   rel="nofollow">
+                                  <i class="fa fa-twitter"></i>
+                                </a>
+                              </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                          {% include 'a_comments.html' %}
+
+                        </div>
+                    </div>
+
+                    {% include 'a_sidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -86,7 +86,7 @@
         var action = like.data('action');
         var dislike = like.next();
         $.ajax({
-            url: "{% url 'article_like' pk=object.pk %}",
+            url: "{% url 'a_article_like' pk=object.pk %}",
             type: 'POST',
             data: {
                 'obj': pk
@@ -107,7 +107,7 @@
         var action = dislike.data('action');
         var like = dislike.prev();
         $.ajax({
-            url: "{% url 'article_dislike' pk=object.pk %}",
+            url: "{% url 'a_article_dislike' pk=object.pk %}",
             type: 'POST',
             data: {
                 'obj': pk

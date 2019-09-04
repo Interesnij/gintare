@@ -23,7 +23,7 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect
 class AMovieListView(PageNumberView,ArchiveIndexView,CategoryListMixin):
 	model=AMovie
 	date_field="posted"
-	template_name="a_movies_index.html"
+	template_name="a_index.html"
 	paginate_by=20
 	allow_empty=True
 	allow_future=True

@@ -1,4 +1,4 @@
-from .views import ACategoriesEdit,AMovieListView,AMovieDetailView,ALastCommentView
+from .views import AMovieListView,AMovieDetailView,ALastCommentView
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from movies.views import VotesView

@@ -1,6 +1,7 @@
 from django.views.generic.base import ContextMixin
 from django.conf import settings
 from category.models import Category
+from a_category.models import ACategory
 from taggit.models import Tag
 from news.models import New
 from movies.models import Movie
@@ -18,6 +19,7 @@ class CategoryListMixin(ContextMixin):
 		context["last_news"]=self.last_news
 		context["last_movie"]=self.last_movie
 		context["categories"]=Category.objects.all()
+		context["a_categories"]=ACategory.objects.all()
 		return context
 
 class PageNumberMixin(CategoryListMixin):

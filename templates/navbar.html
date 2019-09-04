@@ -37,17 +37,26 @@
                    </a>
                  </li>
 
-                <li><a href="#">Категории</a>
+                <li><a href="#">Плейлисты</a>
                     <ul class="dvt-nav-dropdown closed">
                       {% for object in categories %}
                       {% url 'movies_index' pk=object.pk as movies_index %}
                         <li {% if movies_index == current_url %}
                         class=" active"
                         {% endif %}>
-                          <a href="{% url 'movies_index' pk=object.pk %}"
-                            data-bjax data-target="#content1"
-                            data-el="#content1">{{ object.name }}
-                          </a>
+                          <a href="{% url 'movies_index' pk=object.pk %}">{{ object.name }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="#">Категории</a>
+                    <ul class="dvt-nav-dropdown closed">
+                      {% for object in a_categories %}
+                      {% url 'a_index' pk=object.pk as a_index %}
+                        <li {% if a_index == current_url %}
+                        class=" active"
+                        {% endif %}>
+                          <a href="{% url 'a_index' pk=object.pk %}">{{ object.name }}</a>
                         </li>
                         {% endfor %}
                     </ul>

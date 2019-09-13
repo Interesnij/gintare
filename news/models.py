@@ -3,11 +3,13 @@ from django.utils import timezone
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.sitemaps import Sitemap
+from ckeditor_uploader.fields import RichTextUploadingField
+
 
 class New(models.Model):
 	title=models.CharField(max_length=100,verbose_name="Заголовок")
 	description=models.CharField(max_length=300,verbose_name="Краткое содержание")
-	content=models.TextField(verbose_name="Полное содержание")
+	content=RichTextUploadingField(default='', verbose_name="Полное содержание")
 	posted=models.DateTimeField(default=timezone.now, db_index=True, verbose_name="Опубликована")
 	image=models.ImageField(upload_to="new/list",verbose_name="Изображение")
 	user=models.CharField(max_length=100, verbose_name="Автор новости")

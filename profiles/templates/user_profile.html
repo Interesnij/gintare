@@ -13,6 +13,9 @@
                     <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                       <small class="text-muted font-italic">Мой профиль</small>
                       {{ user.username }}
+                      {% else %}
+                      {{ user.get_full_name }}
+                      {% endif %}
                     </h1>
                 </div>
                 <div class="col-md-12">
@@ -30,9 +33,14 @@
                             <div class="col-lg-6 flex-lg-first">
                                 <div class="card-block">
 
-                                      {% if user.username %}
-                                      <p class="card-text lead">Пользователь: {{ user.username }}</p>
+
+                                      <p class="card-text lead">Пользователь: {% if user.username %}
+                                      {{ user.username }}
+                                      {% else %}
+                                      {{ user.get_full_name }}
                                       {% endif %}
+                                      </p>
+
                                       {% if user.first_name %}
                                       <p class="card-text lead">Имя: {{ user.first_name }}</p>
                                       {% endif %}

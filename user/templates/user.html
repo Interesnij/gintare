@@ -19,6 +19,7 @@
                 <div class="col-md-12">
                     <h1 class="h2 dvt-heading-bordered text-capitalize dvt-os-animation m-t-9 m-b-3" data-os-animation="fadeIn" data-os-animation-delay=".3s">
                       <small class="text-muted font-italic">Профиль пользователя</small>
+                      {% if user.username %}
                       {{ user1.username }}
                       {% else %}
                       {{ user1.get_full_name }}

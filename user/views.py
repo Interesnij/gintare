@@ -14,7 +14,7 @@ class ProfileUserView(TemplateView, CategoryListMixin):
     online=None
 
     def get(self,request,*args,**kwargs):
-        self.user1 = User.objects.get(username=self.kwargs["username"])
+        self.user1 = User.objects.get(pk=self.kwargs["pk"])
         self.profile = UserProfile.objects.get_or_create(user=self.user1)[0]
         aaa = datetime.now()
         onl = self.profile.last_activity + timedelta(minutes=1)

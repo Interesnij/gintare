@@ -8,7 +8,7 @@
 {% for object in latest %}
 <li class="media m-t-3">
     <div class="media-left">
-        <a href="{% url 'profile-user' username=object.user.username %}">
+        <a href="{% url 'profile-user' pk=object.user.pk %}">
             {% if object.user.profile.avatar %}
             <img class="media-object img-circle img-fluid" src="{{ object.user.profile.avatar.url }}" alt="comments author" style="width: 70px;">
             {% else %}
